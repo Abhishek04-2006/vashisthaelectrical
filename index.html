@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="google-site-verification" content="google6149196b1eba265d" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vashistha Electrical Company – HT/LT Panel & Transformer Services</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #D4A017;
+      --gold-light: #F0C040;
+      --dark: #0A0C10;
+      --dark2: #111418;
+      --dark3: #1A1E26;
+      --steel: #2A3040;
+      --text: #E8EAF0;
+      --muted: #8A92A0;
+      --accent: #FF6B00;
+      --white: #FFFFFF;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark2);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 3px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 5%;
+      height: 70px;
+      background: rgba(10, 12, 16, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+      transition: all 0.3s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hamburger {
+      justify-self: end;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--dark);
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .nav-logo-text {
+      line-height: 1.1;
+    }
+
+    .nav-logo-text .company {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .nav-logo-text .tagline {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s, border-bottom-color 0.3s;
+      position: relative;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: var(--dark) !important;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      letter-spacing: 1px;
+    }
+
+    .nav-cta {
+      border-bottom: 2px solid transparent !important;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.9;
+      color: var(--dark) !important;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      transition: all 0.3s;
+      display: block;
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 70px;
+      padding-bottom: 80px;
+      isolation: isolate;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 50%, rgba(212, 160, 23, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(255, 107, 0, 0.06) 0%, transparent 50%),
+        linear-gradient(135deg, #0A0C10 0%, #111820 100%);
+      pointer-events: none;
+    }
+
+    /* Circuit pattern */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212, 160, 23, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 160, 23, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 120px;
+      right: 6%;
+      background: rgba(212, 160, 23, 0.1);
+      border: 1px solid rgba(212, 160, 23, 0.3);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      animation: float 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+      max-width: 900px;
+      width: 100%;
+      animation: heroIn 1s ease forwards;
+      pointer-events: auto;
+    }
+
+    @keyframes heroIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 30px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 8vw, 110px);
+      line-height: 0.95;
+      letter-spacing: 3px;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .hero-h1 .highlight {
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: var(--dark);
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(212, 160, 23, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212, 160, 23, 0.4);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid rgba(212, 160, 23, 0.4);
+      color: var(--gold);
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(212, 160, 23, 0.08);
+    }
+
+    .hero-stats {
+      position: relative;
+      z-index: 2;
+      padding: 40px 5% 0;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      animation: heroIn 1s ease 0.3s forwards;
+      opacity: 0;
+      pointer-events: auto;
+    }
+
+    @media (min-width: 1025px) {
+      .hero-stats {
+        position: absolute;
+        bottom: 60px;
+        right: 5%;
+        padding: 0;
+        flex-wrap: nowrap;
+      }
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: 2px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-line {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 45%;
+      background: linear-gradient(135deg, transparent 40%, rgba(212, 160, 23, 0.03) 100%);
+      border-left: 1px solid rgba(212, 160, 23, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .electric-symbol {
+      font-size: 280px;
+      line-height: 1;
+      color: rgba(212, 160, 23, 0.04);
+      font-family: 'Bebas Neue', sans-serif;
+      user-select: none;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      padding: 12px 0;
+      overflow: hidden;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 60px;
+      white-space: nowrap;
+      animation: ticker 20s linear infinite;
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .ticker-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 3px;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .ticker-item::before {
+      content: '⚡';
+      font-size: 12px;
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 100px 5%;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 60px);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .section-title .accent {
+      color: var(--gold);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--dark2);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 16px;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .about-card {
+      background: var(--dark3);
+      border: 1px solid rgba(212, 160, 23, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .about-card:hover {
+      border-color: rgba(212, 160, 23, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .about-card-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .about-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .about-card-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Visual side */
+    .about-visual {
+      position: relative;
+    }
+
+    .about-badge-wrap {
+      background: var(--dark3);
+      border: 1px solid rgba(212, 160, 23, 0.2);
+      border-radius: 12px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-badge-wrap::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(212, 160, 23, 0.1) 0%, transparent 70%);
+    }
+
+    .about-badge-main {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .about-badge-sub {
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .about-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 20px 0;
+    }
+
+    .about-badge-desc {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .about-cert {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 160, 23, 0.1);
+      border: 1px solid rgba(212, 160, 23, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--dark);
+    }
+
+    .services-header {
+      max-width: 600px;
+      margin-bottom: 60px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+    }
+
+    .service-card {
+      background: var(--dark2);
+      border: 1px solid rgba(212, 160, 23, 0.08);
+      border-radius: 8px;
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(212, 160, 23, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      color: rgba(212, 160, 23, 0.06);
+      line-height: 1;
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      letter-spacing: 2px;
+    }
+
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 12px;
+      border-radius: 3px;
+      background: rgba(212, 160, 23, 0.1);
+      border: 1px solid rgba(212, 160, 23, 0.2);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ── WHY CHOOSE US ── */
+    #why-us {
+      background: var(--dark2);
+    }
+
+    .why-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+
+    .why-card {
+      background: var(--dark3);
+      border: 1px solid rgba(212, 160, 23, 0.1);
+      border-radius: 12px;
+      padding: 36px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s;
+    }
+
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+
+    .why-card:hover {
+      border-color: rgba(212, 160, 23, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(212, 160, 23, 0.1);
+    }
+
+    .why-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .why-icon {
+      font-size: 44px;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .why-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1.5px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .why-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    /* ── DIRECTOR ── */
+    #director {
+      background: var(--dark);
+    }
+
+    .director-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .director-card {
+      background: var(--dark3);
+      border: 1px solid rgba(212, 160, 23, 0.2);
+      border-radius: 12px;
+      padding: 40px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .director-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+    }
+
+    .director-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--dark);
+      margin: 0 auto 20px;
+      border: 4px solid rgba(212, 160, 23, 0.3);
+    }
+
+    .director-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .director-role {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .director-exp {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(212, 160, 23, 0.1);
+      font-size: 42px;
+      font-family: 'Bebas Neue', sans-serif;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .director-exp-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .director-info h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .director-info p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .expertise-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .expertise-tag {
+      padding: 6px 14px;
+      border-radius: 4px;
+      background: rgba(212, 160, 23, 0.08);
+      border: 1px solid rgba(212, 160, 23, 0.2);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--dark);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 28px;
+      background: var(--dark2);
+      border: 1px solid rgba(212, 160, 23, 0.1);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .contact-item:hover {
+      border-color: rgba(212, 160, 23, 0.3);
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(212, 160, 23, 0.2), rgba(255, 107, 0, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      word-break: break-all;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-value a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-value a:hover {
+      color: var(--gold);
+    }
+
+    /* Form */
+    .contact-form {
+      background: var(--dark2);
+      border: 1px solid rgba(212, 160, 23, 0.1);
+      border-radius: 12px;
+      padding: 40px;
+    }
+
+    .form-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+      color: var(--white);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--dark3);
+      border: 1px solid rgba(212, 160, 23, 0.15);
+      border-radius: 4px;
+      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group select option {
+      background: var(--dark3);
+    }
+
+    .form-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: var(--dark);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .form-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(212, 160, 23, 0.1);
+      padding: 50px 5% 30px;
+      width: 100%;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .company {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 3px;
+      color: var(--gold);
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 12px;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .a-class-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 160, 23, 0.1);
+      border: 1px solid rgba(212, 160, 23, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE BREAKPOINTS ── */
+
+    /* ── LARGE TABLET / SMALL LAPTOP (≤1024px) ── */
+    @media (max-width: 1024px) {
+      .about-grid {
+        gap: 40px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-top {
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ── TABLET (≤900px) ── */
+    @media (max-width: 900px) {
+      nav {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      section {
+        padding: 70px 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 12, 16, 0.98);
+        padding: 24px;
+        gap: 20px;
+        align-items: flex-start;
+        border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+        z-index: 999;
+        overflow-y: auto;
+        max-height: calc(100vh - 70px);
+      }
+
+      .hero-line {
+        display: none;
+      }
+
+      .hero-badge {
+        display: none;
+      }
+
+      .hero-content {
+        padding: 20px 5%;
+        max-width: 100%;
+      }
+
+      .hero-stats {
+        position: static;
+        opacity: 1;
+        animation: none;
+        padding: 30px 5% 0;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .stat-num {
+        font-size: 36px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .about-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .director-wrap {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── MOBILE (≤600px) ── */
+    @media (max-width: 600px) {
+      nav {
+        padding: 0 4%;
+      }
+
+      section {
+        padding: 60px 4%;
+      }
+
+      .hero-h1 {
+        font-size: 44px;
+        letter-spacing: 1px;
+      }
+
+      .hero-sub {
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn-primary,
+      .btn-outline {
+        width: 100%;
+        justify-content: center;
+        padding: 13px 20px;
+        font-size: 14px;
+      }
+
+      .hero-stats {
+        gap: 16px;
+        padding: 24px 4% 0;
+      }
+
+      .stat-num {
+        font-size: 32px;
+      }
+
+      .stat-label {
+        font-size: 10px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .about-badge-wrap {
+        padding: 28px 20px;
+      }
+
+      .about-badge-main {
+        font-size: 56px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+
+      .service-card {
+        padding: 28px 20px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+
+      .why-card {
+        padding: 28px 20px;
+      }
+
+      .director-wrap {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 100%;
+      }
+
+      .director-card {
+        padding: 28px 20px;
+      }
+
+      .director-avatar {
+        width: 90px;
+        height: 90px;
+        font-size: 36px;
+      }
+
+      .contact-form {
+        padding: 24px 16px;
+      }
+
+      .contact-item {
+        padding: 16px 12px;
+        gap: 12px;
+      }
+
+      .contact-value {
+        font-size: 14px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 40px 4% 24px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .ticker-item {
+        font-size: 13px;
+      }
+
+      .nav-logo-text .company {
+        font-size: 15px;
+      }
+
+      .nav-logo-text .tagline {
+        font-size: 9px;
+      }
+
+      .wa-widget {
+        bottom: 16px;
+        right: 12px;
+      }
+    }
+
+    /* ── EXTRA SMALL (≤400px) ── */
+    @media (max-width: 400px) {
+      nav {
+        padding: 0 3%;
+        height: 60px;
+      }
+
+      #home {
+        padding-top: 60px;
+      }
+
+      .nav-logo-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+      }
+
+      .nav-logo-text .company {
+        font-size: 13px;
+        letter-spacing: 1px;
+      }
+
+      .nav-logo-text .tagline {
+        display: none;
+      }
+
+      .nav-links.open {
+        top: 60px;
+        max-height: calc(100vh - 60px);
+      }
+
+      section {
+        padding: 50px 3%;
+      }
+
+      .hero-h1 {
+        font-size: 36px;
+      }
+
+      .hero-sub {
+        font-size: 14px;
+      }
+
+      .hero-label {
+        font-size: 10px;
+        letter-spacing: 2px;
+      }
+
+      .hero-stats {
+        gap: 12px;
+        padding: 20px 3% 0;
+      }
+
+      .stat-num {
+        font-size: 28px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .about-badge-main {
+        font-size: 44px;
+      }
+
+      .service-card {
+        padding: 22px 16px;
+      }
+
+      .why-card {
+        padding: 22px 16px;
+      }
+
+      .contact-form {
+        padding: 20px 12px;
+      }
+
+      .contact-item {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .contact-icon {
+        align-self: flex-start;
+      }
+
+      .director-info h2 {
+        font-size: 30px;
+      }
+
+      .wa-popup {
+        width: calc(100vw - 24px);
+      }
+
+      .wa-float-btn {
+        width: 50px;
+        height: 50px;
+      }
+
+      .wa-float-btn svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      footer {
+        padding: 32px 3% 20px;
+      }
+
+      .footer-bottom {
+        gap: 8px;
+      }
+    }
+
+    /* Scroll animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── WHATSAPP FLOATING WIDGET ── */
+    .wa-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 16px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+      max-width: calc(100vw - 32px);
+    }
+
+    /* Popup Card */
+    .wa-popup {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
+      width: min(300px, calc(100vw - 40px));
+      overflow: hidden;
+      transform: scale(0.85) translateY(20px);
+      transform-origin: bottom right;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .wa-popup.open {
+      opacity: 1;
+      pointer-events: all;
+      transform: scale(1) translateY(0);
+    }
+
+    /* Popup Header */
+    .wa-popup-header {
+      background: #25D366;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .wa-popup-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .wa-popup-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .wa-popup-status {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .wa-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      display: inline-block;
+      animation: statusBlink 2s ease-in-out infinite;
+    }
+
+    @keyframes statusBlink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.4
+      }
+    }
+
+    /* Popup Body */
+    .wa-popup-body {
+      padding: 16px 14px;
+      background: #ECE5DD;
+    }
+
+    .wa-bubble {
+      background: #fff;
+      border-radius: 0 10px 10px 10px;
+      padding: 10px 14px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.5;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .wa-bubble::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -8px;
+      border: 8px solid transparent;
+      border-top-color: #fff;
+      border-right-color: #fff;
+    }
+
+    .wa-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .wa-option-btn {
+      background: #fff;
+      border: 1.5px solid #25D366;
+      color: #128C7E;
+      padding: 9px 14px;
+      border-radius: 22px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .wa-option-btn:hover {
+      background: #25D366;
+      color: #fff;
+      transform: translateX(3px);
+    }
+
+    /* Main Float Button */
+    .wa-float-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+      border: none;
+      cursor: pointer;
+      animation: waPulse 2s ease-in-out infinite;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .wa-float-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .wa-float-btn svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
+      transition: transform 0.3s;
+    }
+
+    .wa-float-btn.active svg {
+      transform: rotate(90deg);
+    }
+
+    @keyframes waPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+      }
+
+      50% {
+        box-shadow: 0 4px 32px rgba(37, 211, 102, 0.9);
+      }
+    }
+
+    /* Close icon inside button when open */
+    .wa-icon-chat {
+      display: block;
+    }
+
+    .wa-icon-close {
+      display: none;
+    }
+
+    .wa-float-btn.active .wa-icon-chat {
+      display: none;
+    }
+
+    .wa-float-btn.active .wa-icon-close {
+      display: block;
+    }
+
+    /* ── MAP RESPONSIVE ── */
+    .map-wrap iframe {
+      height: 400px;
+    }
+
+    @media (max-width: 600px) {
+      .map-wrap iframe {
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .map-wrap iframe {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- WhatsApp Chat Widget -->
+  <div class="wa-widget" id="waWidget">
+
+    <!-- Popup -->
+    <div class="wa-popup" id="waPopup">
+      <!-- Header -->
+      <div class="wa-popup-header">
+        <div class="wa-popup-avatar">⚡</div>
+        <div>
+          <div class="wa-popup-name">Vashistha Electrical Co.</div>
+          <div class="wa-popup-status"><span class="wa-status-dot"></span> Typically replies instantly</div>
+        </div>
+      </div>
+      <!-- Body -->
+      <div class="wa-popup-body">
+        <div class="wa-bubble">👋 Hello! How can we help you today? Please select an option below:</div>
+        <div class="wa-options">
+          <a class="wa-option-btn"
+            href="https://wa.me/919999353003?text=Hello%2C%20I%20would%20like%20to%20Book%20an%20Appointment%20with%20Vashistha%20Electrical%20Company.%20Please%20let%20me%20know%20the%20available%20slots."
+            target="_blank" rel="noopener">
+            📅 Book an Appointment
+          </a>
+          <a class="wa-option-btn"
+            href="https://wa.me/919999353003?text=Hi%2C%20I%20need%20a%20quote%20for%20HT%2FLT%20Control%20Panel%20installation.%20Please%20share%20more%20details."
+            target="_blank" rel="noopener">
+            ⚡ HT/LT Control Panels
+          </a>
+          <a class="wa-option-btn"
+            href="https://wa.me/919999353003?text=Hello%2C%20I%20am%20interested%20in%20AMF%20or%20APF%20Panel%20services.%20Kindly%20provide%20details%20and%20pricing."
+            target="_blank" rel="noopener">
+            🔋 AMF &amp; APF Panel
+          </a>
+          <a class="wa-option-btn"
+            href="https://wa.me/919999353003?text=Hi%2C%20I%20need%20Electrical%20Erection%20and%20Maintenance%20services.%20Please%20guide%20me%20further."
+            target="_blank" rel="noopener">
+            🔧 Erection &amp; Maintenance
+          </a>
+          <a class="wa-option-btn"
+            href="https://wa.me/919999353003?text=Hello%2C%20I%20need%20help%20with%20Liaison%20Work%20and%20government%20approvals%20for%20an%20electrical%20project."
+            target="_blank" rel="noopener">
+            📋 Liaison Work
+          </a>
+          <a class="wa-option-btn"
+            href="https://wa.me/919999353003?text=Hello%2C%20I%20have%20a%20general%20enquiry%20about%20Vashistha%20Electrical%20Company%20services."
+            target="_blank" rel="noopener">
+            💬 General Enquiry
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Float Button -->
+    <button class="wa-float-btn" id="waFloatBtn" onclick="toggleWaPopup()" aria-label="Chat on WhatsApp">
+      <!-- Chat Icon -->
+      <svg class="wa-icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+      <!-- Close Icon -->
+      <svg class="wa-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#home" class="nav-logo">
+      <div class="nav-logo-icon">VE</div>
+      <div class="nav-logo-text">
+        <div class="company">Vashistha Electrical</div>
+        <div class="tagline">Powering Trust with Excellence</div>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why-us">Why Choose Us</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-badge">⚡ A-Class Govt. Contractor</div>
+    <div class="hero-content">
+      <div class="hero-label">Vashistha Electrical Company</div>
+      <h1 class="hero-h1">
+        Complete<br>
+        <span class="highlight">HT–LT Panel</span><br>
+        &amp; Transformer<br>Services
+      </h1>
+      <p class="hero-sub">Reliable HT/LT electrical solutions for industrial, commercial and government projects —
+        delivered with precision, safety &amp; excellence.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">⚡ Our Services</a>
+        <a href="#contact" class="btn-outline">📞 Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-line">
+      <div class="electric-symbol">⚡</div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Projects Done</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">A</div>
+        <div class="stat-label">Class Contractor</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track" id="ticker">
+      <span class="ticker-item">HT/LT Control Panels</span>
+      <span class="ticker-item">AMF Panel</span>
+      <span class="ticker-item">APF Panel</span>
+      <span class="ticker-item">Distribution Board</span>
+      <span class="ticker-item">Electrical Erection Work</span>
+      <span class="ticker-item">Liaison Work</span>
+      <span class="ticker-item">Panel Maintenance</span>
+      <span class="ticker-item">Transformer Services</span>
+      <span class="ticker-item">HT/LT Control Panels</span>
+      <span class="ticker-item">AMF Panel</span>
+      <span class="ticker-item">APF Panel</span>
+      <span class="ticker-item">Distribution Board</span>
+      <span class="ticker-item">Electrical Erection Work</span>
+      <span class="ticker-item">Liaison Work</span>
+      <span class="ticker-item">Panel Maintenance</span>
+      <span class="ticker-item">Transformer Services</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Trusted <span class="accent">Electrical</span> Solutions</h2>
+        <p>Vashistha Electrical Company is a trusted A-Class Government Contractor with over 5 years of experience in
+          delivering electrical contracting services. Since our establishment, we have been providing reliable and
+          efficient HT/LT electrical solutions for industrial, commercial, and government projects.</p>
+        <p>We specialize in HT/LT panels, transformer services, electrical erection work, liaison services, and
+          electrical maintenance — with a strong commitment to safety, quality workmanship, and timely project
+          execution.</p>
+        <div class="about-cards">
+          <div class="about-card">
+            <div class="about-card-icon">🏛️</div>
+            <div class="about-card-title">Govt. Certified</div>
+            <div class="about-card-text">A-Class Government Contractor with verified credentials</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🛡️</div>
+            <div class="about-card-title">Safety First</div>
+            <div class="about-card-text">Strict compliance with safety standards on every project</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">⚙️</div>
+            <div class="about-card-title">Quality Work</div>
+            <div class="about-card-text">Skilled technical team ensuring top-grade workmanship</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">⏱️</div>
+            <div class="about-card-title">On-Time Delivery</div>
+            <div class="about-card-text">Timely execution and project completion every time</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fade-in">
+        <div class="about-badge-wrap">
+          <div class="about-badge-main">A-CLASS</div>
+          <div class="about-badge-sub">Government Contractor</div>
+          <div class="about-divider"></div>
+          <div class="about-badge-desc">Serving industrial, commercial &amp; government sectors across Uttar Pradesh
+            with unmatched expertise in HT/LT electrical systems.</div>
+          <div class="about-cert">✔ Registered &amp; Certified</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header fade-in">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Our Core <span class="accent">Services</span></h2>
+      <p style="color:var(--muted);font-size:16px;line-height:1.7;">End-to-end electrical contracting solutions for
+        every scale of project — from panel fabrication to full-site erection.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-number">01</div>
+        <div class="service-icon">⚡</div>
+        <div class="service-title">HT/LT Control Panels</div>
+        <div class="service-desc">Design, fabrication, and installation of High Tension and Low Tension control panels
+          for industrial and commercial applications.</div>
+        <span class="service-tag">Core Service</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-number">02</div>
+        <div class="service-icon">🔋</div>
+        <div class="service-title">AMF &amp; APF Panel</div>
+        <div class="service-desc">Automatic Main Failure panels for seamless power backup and Automatic Power Factor
+          panels for energy efficiency.</div>
+        <span class="service-tag">Automation</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-number">03</div>
+        <div class="service-icon">🔌</div>
+        <div class="service-title">Distribution Board</div>
+        <div class="service-desc">Supply and installation of distribution boards ensuring safe and efficient power
+          distribution across facilities.</div>
+        <span class="service-tag">Distribution</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-number">04</div>
+        <div class="service-icon">🏗️</div>
+        <div class="service-title">HT/LT Erection Work</div>
+        <div class="service-desc">Complete electrical erection and installation work including cabling, wiring, and
+          commissioning for large-scale projects.</div>
+        <span class="service-tag">Installation</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-number">05</div>
+        <div class="service-icon">📋</div>
+        <div class="service-title">Liaison Work</div>
+        <div class="service-desc">Expert handling of government and utility liaison, permits, approvals, and regulatory
+          compliance for electrical projects.</div>
+        <span class="service-tag">Compliance</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-number">06</div>
+        <div class="service-icon">🔧</div>
+        <div class="service-title">Panel &amp; Machine Maintenance</div>
+        <div class="service-desc">Preventive and corrective maintenance for electrical panels, machines, and control
+          systems to ensure uninterrupted operations.</div>
+        <span class="service-tag">Maintenance</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section id="why-us">
+    <div class="why-header fade-in">
+      <div class="section-label" style="justify-content:center;">Our Strengths</div>
+      <h2 class="section-title">Why <span class="accent">Choose Us</span></h2>
+      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Trusted by industries across Uttar Pradesh —
+        delivering reliable, safe &amp; quality electrical solutions every project, every time.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-in">
+        <span class="why-icon">🏛️</span>
+        <div class="why-title">A-Class Govt. Certified</div>
+        <div class="why-desc">Registered A-Class Government Contractor with verified credentials — eligible for
+          large-scale government and industrial projects.</div>
+      </div>
+      <div class="why-card fade-in">
+        <span class="why-icon">⏱️</span>
+        <div class="why-title">On-Time Delivery</div>
+        <div class="why-desc">We understand the value of time. Every project is planned and executed to meet deadlines
+          without compromising on quality.</div>
+      </div>
+      <div class="why-card fade-in">
+        <span class="why-icon">🛡️</span>
+        <div class="why-title">Safety First Approach</div>
+        <div class="why-desc">Strict adherence to electrical safety standards and regulations on every site — protecting
+          workers, clients, and infrastructure.</div>
+      </div>
+      <div class="why-card fade-in">
+        <span class="why-icon">⚙️</span>
+        <div class="why-title">Expert Technical Team</div>
+        <div class="why-desc">Our skilled professionals bring decades of hands-on expertise in HT/LT systems, panel
+          fabrication, and erection work.</div>
+      </div>
+      <div class="why-card fade-in">
+        <span class="why-icon">💰</span>
+        <div class="why-title">Competitive Pricing</div>
+        <div class="why-desc">Premium quality electrical solutions at fair, transparent pricing — no hidden costs, no
+          surprises, maximum value for every rupee.</div>
+      </div>
+      <div class="why-card fade-in">
+        <span class="why-icon">🤝</span>
+        <div class="why-title">Client Satisfaction</div>
+        <div class="why-desc">100+ successfully completed projects with long-term client relationships built on trust,
+          transparency, and consistent performance.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTOR -->
+  <section id="director" style="background:var(--dark);">
+    <div class="director-wrap">
+      <div class="director-card fade-in">
+        <div class="director-avatar">AS</div>
+        <div class="director-name">Anuj Sharma</div>
+        <div class="director-role">Director</div>
+        <div class="director-exp">20+</div>
+        <div class="director-exp-label">Years of Experience</div>
+      </div>
+      <div class="director-info fade-in">
+        <div class="section-label">Leadership</div>
+        <h2 class="section-title">Meet Our <span class="accent">Director</span></h2>
+        <p>Mr. Anuj Sharma, Director of Vashistha Electrical Company, brings over 20 years of professional experience in
+          the electrical contracting industry. He possesses extensive expertise in HT/LT electrical systems, control
+          panels, and transformer services.</p>
+        <p>Supported by a highly skilled and professional technical team, he leads the company in delivering safe,
+          reliable, and timely electrical solutions for industrial, commercial, and government projects. The company
+          operates with a strong focus on quality, regulatory compliance, and client satisfaction.</p>
+        <div class="expertise-list">
+          <span class="expertise-tag">HT/LT Systems</span>
+          <span class="expertise-tag">Control Panels</span>
+          <span class="expertise-tag">Transformer Services</span>
+          <span class="expertise-tag">Erection Work</span>
+          <span class="expertise-tag">Liaison Services</span>
+          <span class="expertise-tag">Maintenance</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
+      <div class="section-label" style="justify-content:center;">Get In Touch</div>
+      <h2 class="section-title">Contact <span class="accent">Us</span></h2>
+      <p style="color:var(--muted);font-size:16px;">Ready to start your project? Reach out to us for a free
+        consultation.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="fade-in">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value"><a href="tel:+919999353003">+91 99993 53003</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a
+                href="mailto:vashisthanaman2006@gmail.com?subject=Service%20Enquiry%20-%20Vashistha%20Electrical%20Company&body=Hello%2C%0A%0AI%20would%20like%20to%20enquire%20about%20your%20electrical%20services.%0A%0AName%3A%20%0APhone%3A%20%0AService%20Required%3A%20%0AMessage%3A%20%0A%0AThank%20you.">vashisthanaman2006@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-value">Surajpur Main Market, Greater Noida,<br>Gautam Buddha Nagar (U.P.) – 201306</div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form fade-in" id="contactForm">
+        <div class="form-title">Send Us a Message</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="fname" name="name" placeholder="Full Name" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="fphone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="femail" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select id="fservice" name="service">
+            <option value="">Select a Service</option>
+            <option>HT/LT Control Panels</option>
+            <option>AMF / APF Panel</option>
+            <option>Distribution Board</option>
+            <option>HT/LT Erection Work</option>
+            <option>Liaison Work</option>
+            <option>Panel & Machine Maintenance</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="fmessage" name="message" placeholder="Describe your project requirements..."></textarea>
+        </div>
+        <button type="button" class="form-btn" id="formSubmitBtn" onclick="submitForm()">⚡ Send Enquiry</button>
+      </form>
+    </div>
+
+    <!-- Google Maps Embed -->
+    <div class="fade-in map-wrap"
+      style="max-width:1100px;margin:50px auto 0;border-radius:12px;overflow:hidden;border:1px solid rgba(212,160,23,0.2);">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.8208955053547!2d77.46825457408897!3d28.515035889409223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cebf5533387bf%3A0x501d77dee1dba856!2sVashistha%20Electrical%20Company%20(%20A%20CLASS%20GOVT%20CONTRACTOR)!5e0!3m2!1sen!2sin!4v1774636539647!5m2!1sen!2sin"
+        width="100%" height="400" style="border:0;display:block;min-height:200px;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="company">Vashistha Electrical Co.</div>
+        <p>A-Class Government Contractor providing reliable HT/LT electrical solutions with quality, safety &amp; timely
+          execution across Uttar Pradesh.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why-us">Why Choose Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">HT/LT Control Panels</a></li>
+          <li><a href="#services">AMF &amp; APF Panel</a></li>
+          <li><a href="#services">Distribution Board</a></li>
+          <li><a href="#services">Erection Work</a></li>
+          <li><a href="#services">Liaison Work</a></li>
+          <li><a href="#services">Maintenance</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Vashistha Electrical Company. All rights reserved.</p>
+      <div class="a-class-badge">⚡ A-Class Govt. Contractor</div>
+      <p style="color:var(--muted);font-size:13px;">Greater Noida, U.P. – 201306</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // WhatsApp popup toggle
+    function toggleWaPopup() {
+      const popup = document.getElementById('waPopup');
+      const btn = document.getElementById('waFloatBtn');
+      popup.classList.toggle('open');
+      btn.classList.toggle('active');
+    }
+    // Close popup when clicking outside
+    document.addEventListener('click', function (e) {
+      const widget = document.getElementById('waWidget');
+      if (!widget.contains(e.target)) {
+        document.getElementById('waPopup').classList.remove('open');
+        document.getElementById('waFloatBtn').classList.remove('active');
+      }
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          document.getElementById('navLinks').classList.remove('open');
+          const id = href.replace('#', '');
+          const target = document.getElementById(id);
+          if (target) {
+            const top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        }
+      });
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
+    });
+
+    async function submitForm() {
+      const btn = document.getElementById('formSubmitBtn');
+      const name = document.getElementById('fname').value.trim();
+      const phone = document.getElementById('fphone').value.trim();
+      const email = document.getElementById('femail').value.trim();
+      const service = document.getElementById('fservice').value;
+      const message = document.getElementById('fmessage').value.trim();
+
+      if (!name || !phone || !email) {
+        alert('Name, Phone aur Email zaroor bharen!');
+        return;
+      }
+
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      // Use FormData for better Formspree compatibility (avoids CORS preflight)
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('phone', phone);
+      formData.append('email', email);
+      formData.append('service', service);
+      formData.append('message', message);
+
+      try {
+        const res = await fetch('https://formspree.io/f/xbdpggre', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok) {
+          btn.textContent = '✅ Enquiry Sent!';
+          btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+          document.getElementById('fname').value = '';
+          document.getElementById('fphone').value = '';
+          document.getElementById('femail').value = '';
+          document.getElementById('fservice').value = '';
+          document.getElementById('fmessage').value = '';
+          setTimeout(() => {
+            btn.textContent = '⚡ Send Enquiry';
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        } else {
+          // Formspree returns errors array on failure
+          const errMsg = data.errors ? data.errors.map(e => e.message).join(', ') : 'Server error. Try again.';
+          throw new Error(errMsg);
+        }
+      } catch (e) {
+        console.error('Form error:', e.message);
+        btn.textContent = '❌ Failed. Try Again.';
+        btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+        setTimeout(() => {
+          btn.textContent = '⚡ Send Enquiry';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      }
+    }
+  </script>
+</body>
+
+</html>
