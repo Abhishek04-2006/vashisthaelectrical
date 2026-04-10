@@ -814,6 +814,72 @@
       line-height: 1.85;
     }
 
+    /* ── GALLERY ── */
+    #gallery {
+      background: var(--dark);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--dark3);
+      border: 1px solid rgba(212, 160, 23, 0.1);
+      transition: transform 0.3s, border-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212, 160, 23, 0.4);
+      box-shadow: 0 10px 30px rgba(212, 160, 23, 0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover video {
+      transform: scale(1.05);
+    }
+
+    .gallery-img-placeholder {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      opacity: 0.8;
+      text-align: center;
+    }
+
     /* ── DIRECTOR ── */
     #director {
       background: var(--dark);
@@ -1187,6 +1253,10 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .footer-top {
         grid-template-columns: 1.2fr 1fr 1fr;
         gap: 40px;
@@ -1270,6 +1340,10 @@
       }
 
       .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -1377,6 +1451,11 @@
       }
 
       .why-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+
+      .gallery-grid {
         grid-template-columns: 1fr;
         max-width: 100%;
       }
@@ -1889,6 +1968,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#why-us">Why Choose Us</a></li>
+      <li><a href="#gallery">Gallery</a></li>
     </ul>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
@@ -2110,6 +2190,65 @@
     </div>
   </section>
 
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
+      <div class="section-label" style="justify-content:center;">Our Work</div>
+      <h2 class="section-title">Project <span class="accent">Gallery</span></h2>
+      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Glimpses of our successfully completed electrical projects and panel installations.</p>
+    </div>
+    <div class="gallery-grid">
+      <!-- 
+        Add your photos here! 
+        Uncomment the <img> tag and add your image link.
+      -->
+      <div class="gallery-item fade-in">
+        <img src="images/1.jpeg" alt="Electrical Project" loading="lazy">
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/2.jpeg" alt="Electrical Project" loading="lazy">
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/3.jpeg" alt="Electrical Project" loading="lazy">
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/4.jpeg" alt="Electrical Project" loading="lazy">
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/5.jpeg" alt="Electrical Project" loading="lazy">
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/6.jpeg" alt="Electrical Project" loading="lazy">
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 50px;" class="fade-in">
+      <a href="gallery.html" class="btn-outline" style="border-color: rgba(212,160,23,0.8); color: var(--gold);">📸 View Full Gallery</a>
+    </div>
+  </section>
+
+  <!-- VIDEO SHOWCASE -->
+  <section id="videos" style="background:var(--dark2);">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
+      <div class="section-label" style="justify-content:center;">Live Action</div>
+      <h2 class="section-title">Video <span class="accent">Showcase</span></h2>
+      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Watch our technical team in action. Reliable installations and precision engineering captured alive.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-in">
+        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM%20(1).mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="gallery-item fade-in">
+        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM%20(2).mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="gallery-item fade-in">
+        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="gallery-item fade-in">
+        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.07%20PM.mp4" autoplay loop muted playsinline></video>
+      </div>
+    </div>
+  </section>
+
   <!-- DIRECTOR -->
   <section id="director" style="background:var(--dark);">
     <div class="director-wrap">
@@ -2237,6 +2376,7 @@
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#why-us">Why Choose Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -2312,7 +2452,7 @@
       const message = document.getElementById('fmessage').value.trim();
 
       if (!name || !phone || !email) {
-        alert('Name, Phone aur Email zaroor bharen!');
+        alert('Name, Phone and Email are required');
         return;
       }
 
