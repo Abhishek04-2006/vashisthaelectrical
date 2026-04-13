@@ -2195,7 +2195,8 @@
     <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
       <div class="section-label" style="justify-content:center;">Our Work</div>
       <h2 class="section-title">Project <span class="accent">Gallery</span></h2>
-      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Glimpses of our successfully completed electrical projects and panel installations.</p>
+      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Glimpses of our successfully completed electrical
+        projects and panel installations.</p>
     </div>
     <div class="gallery-grid">
       <!-- 
@@ -2222,7 +2223,8 @@
       </div>
     </div>
     <div style="text-align:center; margin-top: 50px;" class="fade-in">
-      <a href="gallery.html" class="btn-outline" style="border-color: rgba(212,160,23,0.8); color: var(--gold);">📸 View Full Gallery</a>
+      <a href="gallery.html" class="btn-outline" style="border-color: rgba(212,160,23,0.8); color: var(--gold);">📸 View
+        Full Gallery</a>
     </div>
   </section>
 
@@ -2231,20 +2233,25 @@
     <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
       <div class="section-label" style="justify-content:center;">Live Action</div>
       <h2 class="section-title">Video <span class="accent">Showcase</span></h2>
-      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Watch our technical team in action. Reliable installations and precision engineering captured alive.</p>
+      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Watch our technical team in action. Reliable
+        installations and precision engineering captured alive.</p>
     </div>
     <div class="gallery-grid">
       <div class="gallery-item fade-in">
-        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM%20(1).mp4" autoplay loop muted playsinline></video>
+        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM%20(1).mp4" autoplay loop muted
+          playsinline></video>
       </div>
       <div class="gallery-item fade-in">
-        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM%20(2).mp4" autoplay loop muted playsinline></video>
+        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM%20(2).mp4" autoplay loop muted
+          playsinline></video>
       </div>
       <div class="gallery-item fade-in">
-        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM.mp4" autoplay loop muted playsinline></video>
+        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM.mp4" autoplay loop muted
+          playsinline></video>
       </div>
       <div class="gallery-item fade-in">
-        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.07%20PM.mp4" autoplay loop muted playsinline></video>
+        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.07%20PM.mp4" autoplay loop muted
+          playsinline></video>
       </div>
     </div>
   </section>
@@ -2399,6 +2406,50 @@
     </div>
   </footer>
 
+  <!-- ══ V-BOLT AI ASSISTANT ══ -->
+  <div id="vboltWidget">
+    <!-- Toggle Button -->
+    <button id="vboltToggle" onclick="toggleVbolt()" aria-label="Open V-bolt AI Assistant">
+      <span class="vb-icon" id="vboltIcon">⚡</span>
+      <span class="vb-label">V-bolt AI</span>
+      <span class="vb-notif" id="vboltNotif">1</span>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="vboltWindow" class="vb-window">
+      <!-- Header -->
+      <div class="vb-header">
+        <div class="vb-header-left">
+          <div class="vb-avatar">
+            <span>⚡</span>
+            <span class="vb-online"></span>
+          </div>
+          <div>
+            <div class="vb-name">V-bolt</div>
+            <div class="vb-status">AI Assistant · Online</div>
+          </div>
+        </div>
+        <button class="vb-close" onclick="toggleVbolt()" aria-label="Close">✕</button>
+      </div>
+
+      <!-- Messages -->
+      <div class="vb-messages" id="vbMessages">
+        <!-- JS will inject messages -->
+      </div>
+
+      <!-- Quick Replies -->
+      <div class="vb-quick" id="vbQuick"></div>
+
+      <!-- Input -->
+      <div class="vb-input-row">
+        <input type="text" id="vbInput" class="vb-input" placeholder="Ask V-bolt anything…"
+          onkeydown="if(event.key==='Enter') vbSend()" />
+        <button class="vb-send" onclick="vbSend()">➤</button>
+      </div>
+      <div class="vb-footer-note">Powered by V-bolt · Vashistha Electrical</div>
+    </div>
+  </div>
+
   <script>
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
@@ -2505,6 +2556,572 @@
         }, 3000);
       }
     }
+  </script>
+
+  <!-- V-BOLT STYLES -->
+  <style>
+    /* ── V-BOLT WIDGET ── */
+    #vboltWidget {
+      position: fixed;
+      bottom: 100px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    /* Toggle button */
+    #vboltToggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #D4A017, #FF6B00);
+      border: none;
+      border-radius: 50px;
+      padding: 12px 20px 12px 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 32px rgba(212, 160, 23, 0.45);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+
+    #vboltToggle:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(212, 160, 23, 0.55);
+    }
+
+    .vb-icon {
+      font-size: 20px;
+      animation: vbPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes vbPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    .vb-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: #0A0C10;
+      font-weight: 900;
+    }
+
+    .vb-notif {
+      position: absolute;
+      top: -6px;
+      right: -4px;
+      background: #ef4444;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: vbBounce 1.2s ease infinite;
+    }
+
+    @keyframes vbBounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+
+    .vb-notif.hide {
+      display: none;
+    }
+
+    /* Chat Window */
+    .vb-window {
+      width: 360px;
+      max-height: 540px;
+      background: rgba(17, 20, 24, 0.97);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 160, 23, 0.25);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 160, 23, 0.08);
+      transform: scale(0.85) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.3s cubic-bezier(.34, 1.56, .64, 1), opacity 0.25s;
+      transform-origin: bottom right;
+    }
+
+    .vb-window.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Header */
+    .vb-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      background: linear-gradient(135deg, rgba(212, 160, 23, 0.15), rgba(255, 107, 0, 0.08));
+      border-bottom: 1px solid rgba(212, 160, 23, 0.15);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .vb-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .vb-avatar {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #D4A017, #FF6B00);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      position: relative;
+    }
+
+    .vb-online {
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+      width: 10px;
+      height: 10px;
+      background: #22c55e;
+      border-radius: 50%;
+      border: 2px solid #111418;
+    }
+
+    .vb-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: #D4A017;
+    }
+
+    .vb-status {
+      font-size: 11px;
+      color: #8A92A0;
+      letter-spacing: 0.5px;
+    }
+
+    .vb-close {
+      background: rgba(255, 255, 255, 0.06);
+      border: none;
+      color: #8A92A0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .vb-close:hover {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+    }
+
+    /* Messages */
+    .vb-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(212, 160, 23, 0.3) transparent;
+    }
+
+    .vb-msg {
+      display: flex;
+      flex-direction: column;
+      max-width: 82%;
+    }
+
+    .vb-msg.bot {
+      align-self: flex-start;
+    }
+
+    .vb-msg.user {
+      align-self: flex-end;
+    }
+
+    .vb-bubble {
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    .vb-msg.bot .vb-bubble {
+      background: rgba(212, 160, 23, 0.1);
+      border: 1px solid rgba(212, 160, 23, 0.2);
+      color: #E8EAF0;
+      border-bottom-left-radius: 4px;
+    }
+
+    .vb-msg.user .vb-bubble {
+      background: linear-gradient(135deg, #D4A017, #FF6B00);
+      color: #0A0C10;
+      font-weight: 600;
+      border-bottom-right-radius: 4px;
+    }
+
+    .vb-time {
+      font-size: 10px;
+      color: #4A5260;
+      margin-top: 4px;
+      padding: 0 4px;
+    }
+
+    .vb-msg.user .vb-time {
+      text-align: right;
+    }
+
+    /* Typing indicator */
+    .vb-typing .vb-bubble {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 16px;
+    }
+
+    .vb-dot {
+      width: 7px;
+      height: 7px;
+      background: #D4A017;
+      border-radius: 50%;
+      animation: vbDot 1.2s ease-in-out infinite;
+    }
+
+    .vb-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .vb-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes vbDot {
+
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.4;
+      }
+
+      30% {
+        transform: translateY(-6px);
+        opacity: 1;
+      }
+    }
+
+    /* Quick replies */
+    .vb-quick {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 8px 14px;
+      border-top: 1px solid rgba(212, 160, 23, 0.08);
+    }
+
+    .vb-chip {
+      background: rgba(212, 160, 23, 0.08);
+      border: 1px solid rgba(212, 160, 23, 0.25);
+      color: #D4A017;
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .vb-chip:hover {
+      background: rgba(212, 160, 23, 0.18);
+      transform: translateY(-1px);
+    }
+
+    /* Input */
+    .vb-input-row {
+      display: flex;
+      gap: 8px;
+      padding: 12px 14px;
+      border-top: 1px solid rgba(212, 160, 23, 0.1);
+    }
+
+    .vb-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 160, 23, 0.2);
+      border-radius: 24px;
+      padding: 9px 14px;
+      color: #E8EAF0;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .vb-input:focus {
+      border-color: rgba(212, 160, 23, 0.55);
+    }
+
+    .vb-input::placeholder {
+      color: #4A5260;
+    }
+
+    .vb-send {
+      background: linear-gradient(135deg, #D4A017, #FF6B00);
+      border: none;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+      color: #0A0C10;
+      transition: transform 0.2s, box-shadow 0.2s;
+      flex-shrink: 0;
+    }
+
+    .vb-send:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 16px rgba(212, 160, 23, 0.4);
+    }
+
+    /* Footer note */
+    .vb-footer-note {
+      text-align: center;
+      font-size: 10px;
+      color: #2A3040;
+      padding: 6px 0 10px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      #vboltWidget {
+        right: 12px;
+        bottom: 40px;
+      }
+
+      .vb-window {
+        width: calc(100vw - 24px);
+        max-height: 480px;
+      }
+
+      .vb-label {
+        display: none;
+      }
+
+      #vboltToggle {
+        padding: 12px 14px;
+        border-radius: 50%;
+      }
+    }
+  </style>
+
+  <!-- V-BOLT SCRIPT -->
+  <script>
+    // ── V-BOLT Knowledge Base ──
+    const VB_KB = [
+      {
+        keys: ['hello', 'hi', 'hey', 'hlo', 'helo', 'namaskar', 'namaste', 'namskar'],
+        answer: '⚡ Namaste! Main V-bolt hoon, Vashistha Electrical ka AI Assistant.\n\nAap kaise madad kar sakta hoon aaj? Neeche quick options se choose karein ya seedha type karein! 😊'
+      },
+      {
+        keys: ['service', 'services', 'kya karte', 'kya kaam', 'what do', 'work', 'offer', 'provide'],
+        answer: '🔧 <b>Hamari Services:</b>\n\n⚡ HT/LT Control Panels\n⚡ AMF & APF Panel\n⚡ Distribution Board\n⚡ HT/LT Erection Work\n⚡ Liaison Work\n⚡ Panel & Machine Maintenance\n\nKisi bhi service ke baare mein detail jaanein!'
+      },
+      {
+        keys: ['ht', 'lt', 'ht/lt', 'panel', 'control panel', 'htlt'],
+        answer: '🔌 <b>HT/LT Control Panels</b>\n\nHum high-quality HT (High Tension) aur LT (Low Tension) control panels design aur manufacture karte hain. Industrial, commercial aur government projects ke liye certified panels banate hain.'
+      },
+      {
+        keys: ['amf', 'apf', 'automatic', 'power factor'],
+        answer: '⚙️ <b>AMF & APF Panels</b>\n\nAutomatic Mains Failure (AMF) aur Automatic Power Factor (APF) panels — power reliability aur energy efficiency ke liye best solution. DG set integration bhi available hai.'
+      },
+      {
+        keys: ['erection', 'erection work', 'installation', 'install'],
+        answer: '🏗️ <b>HT/LT Erection Work</b>\n\nPole erection, transformer installation, cable laying aur substation work — sab hamari team karte hai with full safety compliance.'
+      },
+      {
+        keys: ['liaison', 'government', 'permission', 'approval', 'govt'],
+        answer: '📋 <b>Liaison Work</b>\n\nHum government approvals, DVVNL/PVVNL connection, NOC aur electrical clearances ka kaam karte hain. A-Class contractor hone ki wajah se hamara track record excellent hai.'
+      },
+      {
+        keys: ['maintenance', 'amc', 'repair', 'service contract'],
+        answer: '🔩 <b>Panel & Machine Maintenance</b>\n\nHum Annual Maintenance Contract (AMC) bhi provide karte hain — panels, machines aur electrical systems ki regular servicing ke liye. Downtime minimize hota hai.'
+      },
+      {
+        keys: ['contact', 'phone', 'call', 'number', 'reach', 'whatsapp'],
+        answer: '📞 <b>Humse Sampark Karein:</b>\n\n📱 +91-9719-XXXXXX\n📧 vashisthanaman2006@gmail.com\n📍 Greater Noida, U.P. – 201306\n\nWhatsApp pe bhi message kar sakte hain neeche wale button se!'
+      },
+      {
+        keys: ['location', 'address', 'kahan', 'where', 'noida', 'greater noida', 'uttar pradesh', 'up'],
+        answer: '📍 <b>Hamara Office:</b>\n\nVashistha Electrical Company\nGreater Noida, Uttar Pradesh – 201306\n\nGoogle Maps pe hum available hain — Contact section mein map dekh sakte hain!'
+      },
+      {
+        keys: ['price', 'rate', 'cost', 'kitna', 'quote', 'quotation', 'charges'],
+        answer: '💰 <b>Pricing & Quotation</b>\n\nHamari pricing project ke size aur scope pe depend karti hai. Free consultation ke liye:\n\n➤ Contact form fill karein\n➤ Ya directly WhatsApp karein\n\nHum 24 ghante mein response dete hain!'
+      },
+      {
+        keys: ['about', 'company', 'vashistha', 'history', 'since', 'year', 'established'],
+        answer: '🏢 <b>Vashistha Electrical Company</b>\n\n✅ A-Class Government Contractor\n✅ 10+ saal ka experience\n✅ 500+ projects successfully completed\n✅ Greater Noida, UP based\n✅ HT/LT electrical solutions ke specialists\n\nHum quality, safety aur timely execution par focus karte hain.'
+      },
+      {
+        keys: ['experience', 'years', 'track record', 'projects', 'completed'],
+        answer: '🏆 <b>Hamara Track Record:</b>\n\n📊 500+ Projects Completed\n🕐 10+ Years of Experience\n👷 50+ Skilled Professionals\n✅ Zero Accident Record\n🏛️ Government & Private Sector dono mein kaam kiya hai'
+      },
+      {
+        keys: ['certification', 'certified', 'iso', 'license', 'a class', 'grade'],
+        answer: '🎖️ <b>Certifications & Grade:</b>\n\nHum <b>A-Class Government Electrical Contractor</b> hain — highest grade.\n\n✅ Licensed & Certified\n✅ UPPCL empanelled\n✅ Safety compliance certified\n\nSaare government tenders ke liye eligible hain.'
+      },
+      {
+        keys: ['gallery', 'photo', 'image', 'projects', 'portfolio', 'work done'],
+        answer: '🖼️ <b>Hamara Work Portfolio:</b>\n\nHamari Gallery mein 50+ real project photos hain!\n\nWebsite par Gallery section mein jaake dekh sakte hain, ya gallery.html open karein full collection ke liye.'
+      },
+      {
+        keys: ['enquiry', 'enquire', 'book', 'appointment', 'meeting', 'visit'],
+        answer: '📝 <b>Enquiry Kaise Karein:</b>\n\n1️⃣ Contact Section mein form fill karein\n2️⃣ WhatsApp pe message karein\n3️⃣ Direct call karein\n\nHum aaapke project requirements samajh ke best solution denge!'
+      },
+      {
+        keys: ['thank', 'thanks', 'shukriya', 'dhanyawad', 'great', 'good', 'nice', 'perfect', 'awesome'],
+        answer: '😊 Shukriya! Aapka aadar karte hain! Koi bhi sawal ho toh V-bolt hamesha ready hai.\n\n⚡ Vashistha Electrical – Powered by Expertise!'
+      },
+      {
+        keys: ['bye', 'goodbye', 'ok', 'okay', 'done', 'exit', 'close', 'band'],
+        answer: '👋 Dhanyawad for chatting with V-bolt! Kisi bhi sawaal ke liye hum yahan hain.\n\n⚡ Vashistha Electrical Company ki taraf se namaskar!'
+      }
+    ];
+
+    const VB_DEFAULT = '🤔 Yeh sawal samajh nahi aaya. Kripya in topics mein se koi choose karein ya neeche quick reply use karein:\n\n• Services • Contact • Pricing • About Us • Gallery';
+
+    const VB_GREET = '👋 Namaste! Main <b>V-bolt</b> hoon — Vashistha Electrical ka AI Assistant!\n\nMain aapko humari services, pricing, location aur baaki jaankari mein madad kar sakta hoon. Kya jaanna chahte hain?';
+
+    const VB_QUICK_DEFAULT = ['⚡ Services', '📞 Contact', '💰 Pricing', '🏢 About Us', '🖼️ Gallery'];
+
+    let vbOpen = false;
+    let vbStarted = false;
+
+    function toggleVbolt() {
+      vbOpen = !vbOpen;
+      document.getElementById('vboltWindow').classList.toggle('open', vbOpen);
+      document.getElementById('vboltNotif').classList.toggle('hide', true);
+      if (vbOpen && !vbStarted) {
+        vbStarted = true;
+        setTimeout(() => vbAddMsg('bot', VB_GREET), 350);
+        setTimeout(() => vbSetQuick(VB_QUICK_DEFAULT), 800);
+      }
+      if (vbOpen) setTimeout(() => document.getElementById('vbInput').focus(), 350);
+    }
+
+    function vbNow() {
+      return new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function vbAddMsg(role, html, opts = {}) {
+      const box = document.getElementById('vbMessages');
+      const div = document.createElement('div');
+      div.className = `vb-msg ${role}`;
+      if (opts.typing) {
+        div.id = 'vbTyping';
+        div.innerHTML = `<div class="vb-bubble"><span class="vb-dot"></span><span class="vb-dot"></span><span class="vb-dot"></span></div>`;
+        div.classList.add('vb-typing');
+      } else {
+        const txt = html.replace(/\n/g, '<br>');
+        div.innerHTML = `<div class="vb-bubble">${txt}</div><div class="vb-time">${vbNow()}</div>`;
+      }
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+      return div;
+    }
+
+    function vbReply(question) {
+      const q = question.toLowerCase().trim();
+      // Show typing
+      const typing = vbAddMsg('bot', '', { typing: true });
+      setTimeout(() => {
+        typing.remove();
+        let answer = VB_DEFAULT;
+        for (const item of VB_KB) {
+          if (item.keys.some(k => q.includes(k))) {
+            answer = item.answer;
+            break;
+          }
+        }
+        vbAddMsg('bot', answer);
+        vbSetQuick(VB_QUICK_DEFAULT);
+      }, 900 + Math.random() * 400);
+    }
+
+    function vbSend() {
+      const inp = document.getElementById('vbInput');
+      const val = inp.value.trim();
+      if (!val) return;
+      vbAddMsg('user', val);
+      inp.value = '';
+      document.getElementById('vbQuick').innerHTML = '';
+      vbReply(val);
+    }
+
+    function vbQuickReply(txt) {
+      vbAddMsg('user', txt);
+      document.getElementById('vbQuick').innerHTML = '';
+      vbReply(txt);
+    }
+
+    function vbSetQuick(chips) {
+      const qDiv = document.getElementById('vbQuick');
+      qDiv.innerHTML = '';
+      chips.forEach(c => {
+        const btn = document.createElement('button');
+        btn.className = 'vb-chip';
+        btn.textContent = c;
+        btn.onclick = () => vbQuickReply(c);
+        qDiv.appendChild(btn);
+      });
+    }
+
+    // Auto-show notification after 4s
+    setTimeout(() => {
+      const n = document.getElementById('vboltNotif');
+      if (n) n.classList.remove('hide');
+    }, 4000);
   </script>
 </body>
 

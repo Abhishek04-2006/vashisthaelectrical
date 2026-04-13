@@ -1870,6 +1870,250 @@
         height: 200px;
       }
     }
+
+    /* ── FILTER TABS ── */
+    /* Default: single-row horizontal scroll (works on all phones & tablets) */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: visible;
+      justify-content: flex-start;
+      gap: 8px;
+      padding: 4px 5% 12px;
+      margin: 0 0 28px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .filter-tabs::-webkit-scrollbar { display: none; }
+    .filter-btn { flex-shrink: 0; white-space: nowrap; }
+
+    /* Large desktop only: wrap into centered 2 rows */
+    @media (min-width: 1100px) {
+      .filter-tabs {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        justify-content: center;
+        padding: 0 5%;
+        margin: 0 0 28px;
+      }
+    }
+
+    /* Mobile/Tablet: horizontal scroll instead of wrapping */
+    @media (max-width: 900px) {
+      .filter-btn {
+        padding: 8px 14px !important;
+        font-size: 12px !important;
+      }
+    }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--dark3);
+      border: 1.5px solid rgba(212, 160, 23, 0.15);
+      color: var(--muted);
+      padding: 9px 18px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
+      letter-spacing: 0.8px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(212, 160, 23, 0.5);
+      color: var(--gold);
+      background: rgba(212, 160, 23, 0.06);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: var(--dark);
+      border-color: transparent;
+      box-shadow: 0 4px 16px rgba(212, 160, 23, 0.3);
+    }
+
+    .tab-count {
+      background: rgba(0,0,0,0.2);
+      border-radius: 10px;
+      padding: 1px 7px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .filter-btn.active .tab-count {
+      background: rgba(0,0,0,0.25);
+    }
+
+    /* ── GALLERY COUNT INFO ── */
+    .gallery-count-info {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+    }
+
+    .gallery-count-info strong {
+      color: var(--gold);
+    }
+
+    /* ── GALLERY ITEM OVERLAY ── */
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+      padding: 16px 12px 10px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover .gallery-item-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-cat-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: var(--dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+
+    /* Hide/show filter animation */
+    .gallery-item.hidden {
+      display: none;
+    }
+
+    .gallery-item.filter-anim {
+      animation: filterPop 0.35s ease forwards;
+    }
+
+    @keyframes filterPop {
+      from { opacity: 0; transform: scale(0.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.93);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .lightbox-overlay.open {
+      display: flex;
+      animation: lbFadeIn 0.25s ease;
+    }
+
+    @keyframes lbFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 0 60px rgba(212,160,23,0.2);
+      object-fit: contain;
+      animation: lbImgIn 0.3s ease;
+    }
+
+    @keyframes lbImgIn {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: rgba(212,160,23,0.15);
+      border: 1px solid rgba(212,160,23,0.3);
+      color: var(--gold);
+      font-size: 22px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .lb-close:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .lb-prev, .lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(212,160,23,0.12);
+      border: 1px solid rgba(212,160,23,0.25);
+      color: var(--gold);
+      font-size: 36px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+
+    .lb-prev:hover, .lb-next:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .lb-caption {
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    @media (max-width: 600px) {
+      .lb-prev { left: 6px; }
+      .lb-next { right: 6px; }
+      .lb-prev, .lb-next { width: 40px; height: 40px; font-size: 28px; }
+    }
   </style>
 </head>
 
@@ -1962,152 +2206,250 @@
       <span></span><span></span><span></span>
     </div>
   </nav>
-  <section id="gallery-page" style="padding-top: 120px; padding-bottom: 60px; min-height: calc(100vh - 300px); background: var(--dark);">
-    <div style="text-align:center;max-width:800px;margin:0 auto 60px;">
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    <button class="lb-prev" onclick="event.stopPropagation(); shiftLightbox(-1)">&#8249;</button>
+    <img id="lb-img" src="" alt="Project Photo">
+    <button class="lb-next" onclick="event.stopPropagation(); shiftLightbox(1)">&#8250;</button>
+    <div class="lb-caption" id="lb-caption"></div>
+  </div>
+
+  <section id="gallery-page" style="padding-top: 120px; padding-bottom: 80px; min-height: calc(100vh - 300px); background: var(--dark);">
+    <div style="text-align:center;max-width:800px;margin:0 auto 50px;">
       <div class="section-label" style="justify-content:center;">Complete Portfolio</div>
       <h1 class="section-title">Our Project <span class="accent">Gallery</span></h1>
-      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Browse through our extensive collection of completed electrical projects, panel installations, and more.</p>
+      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Browse our completed work — filter by service category to find what you need.</p>
     </div>
-    
-    <div class="gallery-grid">
-      <div class="gallery-item fade-in">
-        <img src="images/1.jpeg" alt="Electrical Project" loading="lazy">
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs" id="filterTabs" style="display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:visible;justify-content:flex-start;gap:8px;padding:4px 5% 12px;margin:0 0 28px;-webkit-overflow-scrolling:touch;scrollbar-width:none;">
+      <button class="filter-btn active" data-filter="all" onclick="filterGallery('all', this)">⚡ All <span class="tab-count" id="cnt-all">—</span></button>
+      <button class="filter-btn" data-filter="dg" onclick="filterGallery('dg', this)">🟢 DG Sets <span class="tab-count" id="cnt-dg">—</span></button>
+      <button class="filter-btn" data-filter="transformer" onclick="filterGallery('transformer', this)">⚫ Transformers <span class="tab-count" id="cnt-transformer">—</span></button>
+      <button class="filter-btn" data-filter="overhauling" onclick="filterGallery('overhauling', this)">🔧 Overhauling <span class="tab-count" id="cnt-overhauling">—</span></button>
+      <button class="filter-btn" data-filter="lt-panel" onclick="filterGallery('lt-panel', this)">🟡 LT Panels <span class="tab-count" id="cnt-lt-panel">—</span></button>
+      <button class="filter-btn" data-filter="ht-panel" onclick="filterGallery('ht-panel', this)">🔵 HT Switchgear <span class="tab-count" id="cnt-ht-panel">—</span></button>
+      <button class="filter-btn" data-filter="site" onclick="filterGallery('site', this)">🟠 Site Erection <span class="tab-count" id="cnt-site">—</span></button>
+      <button class="filter-btn" data-filter="safety" onclick="filterGallery('safety', this)">🔶 Safety <span class="tab-count" id="cnt-safety">—</span></button>
+    </div>
+
+    <!-- Gallery Count Info -->
+    <div class="gallery-count-info" id="galleryCountInfo">Showing all <strong>46</strong> projects</div>
+
+    <!-- Categorized Gallery Grid -->
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- DG Sets: 1,5,6,7,8,9,10,11 -->
+      <div class="gallery-item fade-in" data-cat="dg" data-caption="Stamford DG Alternator – Close Up">
+        <img src="images/1.jpeg" alt="Cummins DG Set Alternator" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">DG Set</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/2.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="dg" data-caption="Jakson DG Sets – Generator Room Installation">
+        <img src="images/5.jpeg" alt="Jakson DG Set Room" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">DG Set</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/3.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="dg" data-caption="Jakson Silent DG Set – Outdoor Erection">
+        <img src="images/6.jpeg" alt="Jakson Silent DG Set" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">DG Set</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/4.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="dg" data-caption="Cummins DG Alternator – Wiring Detail">
+        <img src="images/7.jpeg" alt="Cummins DG Wiring" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">DG Set</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/5.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="dg" data-caption="Cummins DG Alternator – Close Up">
+        <img src="images/8.jpeg" alt="Cummins DG Alternator" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">DG Set</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/6.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="dg" data-caption="Cummins Alternator – Interior Detail">
+        <img src="images/9.jpeg" alt="Cummins DG Alternator Interior" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">DG Set</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/7.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="dg" data-caption="Stamford DG Alternator – 1625 kVA Rating Plate">
+        <img src="images/10.jpeg" alt="Stamford 1625 kVA DG" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">DG Set</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/8.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="dg" data-caption="Cummins DG Alternator – Side View">
+        <img src="images/11.jpeg" alt="Cummins DG Side View" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">DG Set</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/9.jpeg" alt="Electrical Project" loading="lazy">
+
+      <!-- Transformer Installation: 2,3,4,28,29,36,37,38,42,43,44,45 -->
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Power Transformers – Outdoor Yard">
+        <img src="images/2.jpeg" alt="Transformer Outdoor Yard" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/10.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Multiple Transformers – Substation Site">
+        <img src="images/3.jpeg" alt="Substation Transformers" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/11.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Dynamic Brand Transformer – Erection">
+        <img src="images/4.jpeg" alt="Dynamic Transformer Erection" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/12.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Transformer Shifting – Forklift Operation">
+        <img src="images/28.jpeg" alt="Transformer Shifting Forklift" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/13.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Transformer Shifting – Loading Site">
+        <img src="images/29.jpeg" alt="Transformer Loading" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/14.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Transformer on Plinth – Construction Site">
+        <img src="images/36.jpeg" alt="Transformer Plinth Installation" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/15.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Transformer Erection – HT Line Connection">
+        <img src="images/37.jpeg" alt="Transformer HT Connection" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/16.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Transformer with Safety Cage – Site">
+        <img src="images/38.jpeg" alt="Transformer Safety Cage" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/17.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="SST Transformer – Completed Installation">
+        <img src="images/42.jpeg" alt="SST Transformer Installed" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/18.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Transformer Yard – Residential Project">
+        <img src="images/43.jpeg" alt="Residential Transformer Yard" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/19.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Lucy Electric Switchgear + Transformer – Commercial">
+        <img src="images/44.jpeg" alt="Lucy Electric Switchgear" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/20.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Lucy Electric Panel – 11kV Installation">
+        <img src="images/45.jpeg" alt="Lucy Electric Panel 11kV" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/21.jpeg" alt="Electrical Project" loading="lazy">
+
+      <!-- Transformer Overhauling: 30,31,32,33,34,35 -->
+      <div class="gallery-item fade-in" data-cat="overhauling" data-caption="Transformer Overhauling – Radiator Fitting">
+        <img src="images/30.jpeg" alt="Transformer Radiator Fitting" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Overhauling</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/22.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="overhauling" data-caption="Transformer Assembly – Marshalling Box">
+        <img src="images/31.jpeg" alt="Transformer Marshalling Box" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Overhauling</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/23.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="overhauling" data-caption="Transformer Erection – Oil Filling Process">
+        <img src="images/32.jpeg" alt="Transformer Oil Filling" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Overhauling</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/24.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="overhauling" data-caption="Transformer Winding – Coil Inspection">
+        <img src="images/20.jpeg" alt="Transformer Coil Inspection" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Overhauling</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/25.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="overhauling" data-caption="Transformer Internal – Busbar Supply">
+        <img src="images/27.jpeg" alt="Transformer Busbar Supply" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Overhauling</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/26.jpeg" alt="Electrical Project" loading="lazy">
+
+      <!-- LT Panels: 12,13,14,15,16,17,40,l -->
+      <div class="gallery-item fade-in" data-cat="lt-panel" data-caption="LT MCC Panel – Factory Maintenance">
+        <img src="images/12.jpeg" alt="LT MCC Panel Factory" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">LT Panel</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/27.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="lt-panel" data-caption="LT MCC Panel – Side View Maintenance">
+        <img src="images/13.jpeg" alt="LT Panel Side View" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">LT Panel</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/28.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="lt-panel" data-caption="LT DB Panel – Compact Unit">
+        <img src="images/14.jpeg" alt="LT DB Panel" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">LT Panel</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/29.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="lt-panel" data-caption="LT MCC Panel – Large Industrial Panel">
+        <img src="images/15.jpeg" alt="LT MCC Panel Industrial" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">LT Panel</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/30.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="lt-panel" data-caption="LT Control Panel – Installation in Progress">
+        <img src="images/16.jpeg" alt="LT Control Panel Install" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">LT Panel</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/31.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="lt-panel" data-caption="LT Panels Room – Multiple Units">
+        <img src="images/17.jpeg" alt="LT Panels Room" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">LT Panel</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/32.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="lt-panel" data-caption="New LT Distribution Board – Outdoor">
+        <img src="images/40.jpeg" alt="LT Distribution Board" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">LT Panel</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/33.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="lt-panel" data-caption="LT Panel Inspection – Engineer at Work">
+        <img src="images/l.jpeg" alt="LT Panel Engineer Inspection" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">LT Panel</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/34.jpeg" alt="Electrical Project" loading="lazy">
+
+      <!-- HT Switchgear / VCB: 19, 41 -->
+      <div class="gallery-item fade-in" data-cat="ht-panel" data-caption="VCB Panel – 11kV Vacuum Circuit Breaker">
+        <img src="images/19.jpeg" alt="VCB 11kV Panel" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">HT Switchgear</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/35.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="ht-panel" data-caption="11KV GODO Panel – HT Enclosure">
+        <img src="images/41.jpeg" alt="11kV GODO HT Panel" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">HT Switchgear</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/36.jpeg" alt="Electrical Project" loading="lazy">
+
+      <!-- Site Erection Work: 25,26,33,34,35,39 -->
+      <div class="gallery-item fade-in" data-cat="site" data-caption="Switchgear Commissioning – K.R. Mangalam Site">
+        <img src="images/25.jpeg" alt="Switchgear Commissioning" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Site Work</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/37.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="site" data-caption="Team Commissioning Switchgear – Site Visit">
+        <img src="images/26.jpeg" alt="Team Site Work" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Site Work</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/38.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="site" data-caption="Transformer Installation – Ongoing Erection">
+        <img src="images/33.jpeg" alt="Transformer Erection Ongoing" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Site Work</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/39.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="site" data-caption="Transformer erection – Panel Alignment">
+        <img src="images/34.jpeg" alt="Panel Alignment on Site" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Site Work</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/40.jpeg" alt="Electrical Project" loading="lazy">
+
+      <!-- HT Cable / Supply: 18 -->
+      <div class="gallery-item fade-in" data-cat="site" data-caption="HT Termination Kit – Cable Materials">
+        <img src="images/18.jpeg" alt="HT Cable Termination Kit" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Site Work</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/41.jpeg" alt="Electrical Project" loading="lazy">
+
+      <!-- Transformer Overhauling extra: 35 -->
+      <div class="gallery-item fade-in" data-cat="overhauling" data-caption="Transformer Commissioning – Engineers Working">
+        <img src="images/35.jpeg" alt="Transformer Commissioning" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Overhauling</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/42.jpeg" alt="Electrical Project" loading="lazy">
+
+      <!-- Safety / Toolbox Talks: 21,22,23,24 -->
+      <div class="gallery-item fade-in" data-cat="safety" data-caption="Safety Toolbox Talk – Site Briefing">
+        <img src="images/21.jpeg" alt="Safety Toolbox Talk" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Safety</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/43.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="safety" data-caption="Safety Briefing – All Crew Members">
+        <img src="images/22.jpeg" alt="Safety Briefing Crew" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Safety</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/44.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="safety" data-caption="Morning Safety Talk – Worker Training">
+        <img src="images/23.jpeg" alt="Morning Safety Talk" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Safety</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/45.jpeg" alt="Electrical Project" loading="lazy">
+      <div class="gallery-item fade-in" data-cat="safety" data-caption="Safety Induction – Key Project Site">
+        <img src="images/24.jpeg" alt="Safety Induction" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Safety</span></div>
       </div>
-      <div class="gallery-item fade-in">
-        <img src="images/l.jpeg" alt="Electrical Project" loading="lazy">
+
+      <!-- SST Substation erection: 39,42 -->
+      <div class="gallery-item fade-in" data-cat="transformer" data-caption="Substation Yard – Completed Transformer Setup">
+        <img src="images/39.jpeg" alt="Substation Yard Transformer" loading="lazy" onclick="openLightbox(this)">
+        <div class="gallery-item-overlay"><span class="gallery-cat-tag">Transformer</span></div>
       </div>
+
+    </div>
+
+    <!-- No results message -->
+    <div id="noResults" style="display:none; text-align:center; padding:60px 20px;">
+      <div style="font-size:48px; margin-bottom:16px;">🔍</div>
+      <p style="color:var(--muted); font-size:18px;">No projects found in this category.</p>
     </div>
   </section>
   <!-- FOOTER -->
@@ -2149,25 +2491,11 @@
   </footer>
 
   <script>
+    // ── NAV & MENU ──
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('open');
     }
 
-    // WhatsApp popup toggle
-    function toggleWaPopup() {
-      const popup = document.getElementById('waPopup');
-      const btn = document.getElementById('waFloatBtn');
-      popup.classList.toggle('open');
-      btn.classList.toggle('active');
-    }
-    // Close popup when clicking outside
-    document.addEventListener('click', function (e) {
-      const widget = document.getElementById('waWidget');
-      if (!widget.contains(e.target)) {
-        document.getElementById('waPopup').classList.remove('open');
-        document.getElementById('waFloatBtn').classList.remove('active');
-      }
-    });
     document.querySelectorAll('.nav-links a').forEach(a => {
       a.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
@@ -2183,15 +2511,142 @@
         }
       });
     });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
     window.addEventListener('scroll', () => {
       const nav = document.getElementById('navbar');
       nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
     });
 
+    // ── WHATSAPP ──
+    function toggleWaPopup() {
+      const popup = document.getElementById('waPopup');
+      const btn = document.getElementById('waFloatBtn');
+      popup.classList.toggle('open');
+      btn.classList.toggle('active');
+    }
+    document.addEventListener('click', function (e) {
+      const widget = document.getElementById('waWidget');
+      if (!widget.contains(e.target)) {
+        document.getElementById('waPopup').classList.remove('open');
+        document.getElementById('waFloatBtn').classList.remove('active');
+      }
+    });
+
+    // ── FADE IN OBSERVER ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── DYNAMIC TAB COUNTS ──
+    function initGalleryCounts() {
+      const items = document.querySelectorAll('#galleryGrid .gallery-item');
+      const counts = { all: items.length };
+      items.forEach(item => {
+        const c = item.getAttribute('data-cat');
+        counts[c] = (counts[c] || 0) + 1;
+      });
+      // Fill badges
+      Object.keys(counts).forEach(key => {
+        const el = document.getElementById('cnt-' + key);
+        if (el) el.textContent = counts[key];
+      });
+    }
+    // Run on load
+    document.addEventListener('DOMContentLoaded', initGalleryCounts);
+
+    // ── GALLERY FILTER ──
+    function filterGallery(cat, btn) {
+      // Update active tab
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('#galleryGrid .gallery-item');
+      let visibleCount = 0;
+
+      items.forEach(item => {
+        const itemCat = item.getAttribute('data-cat');
+        if (cat === 'all' || itemCat === cat) {
+          item.classList.remove('hidden');
+          item.classList.remove('filter-anim');
+          // trigger reflow
+          void item.offsetWidth;
+          item.classList.add('filter-anim');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      // Update count info
+      const info = document.getElementById('galleryCountInfo');
+      const catNames = {
+        all: 'all', dg: 'DG Sets', transformer: 'Transformers',
+        overhauling: 'Overhauling', 'lt-panel': 'LT Panels',
+        'ht-panel': 'HT Switchgear', site: 'Site Erection', safety: 'Safety Briefings'
+      };
+      if (cat === 'all') {
+        info.innerHTML = 'Showing all <strong>' + visibleCount + '</strong> projects';
+      } else {
+        info.innerHTML = 'Showing <strong>' + visibleCount + '</strong> projects in <strong>' + catNames[cat] + '</strong>';
+      }
+
+      // No results
+      document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // ── LIGHTBOX ──
+    let lbImages = [];
+    let lbIndex  = 0;
+
+    function openLightbox(imgEl) {
+      // Build list of currently visible images
+      const visibleItems = [...document.querySelectorAll('#galleryGrid .gallery-item:not(.hidden)')];
+      lbImages = visibleItems.map(item => ({
+        src: item.querySelector('img').src,
+        caption: item.getAttribute('data-caption') || ''
+      }));
+
+      // Find clicked image index
+      const clickedSrc = imgEl.src;
+      lbIndex = lbImages.findIndex(i => i.src === clickedSrc);
+      if (lbIndex === -1) lbIndex = 0;
+
+      showLightboxImage();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showLightboxImage() {
+      const { src, caption } = lbImages[lbIndex];
+      const lbImg = document.getElementById('lb-img');
+      lbImg.style.animation = 'none';
+      void lbImg.offsetWidth;
+      lbImg.style.animation = '';
+      lbImg.src = src;
+      document.getElementById('lb-caption').textContent = caption;
+    }
+
+    function shiftLightbox(dir) {
+      lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+      showLightboxImage();
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      const lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'ArrowRight') shiftLightbox(1);
+      if (e.key === 'ArrowLeft')  shiftLightbox(-1);
+      if (e.key === 'Escape')     closeLightbox();
+    });
+
+    // ── CONTACT FORM (kept for footer compatibility) ──
     async function submitForm() {
       const btn = document.getElementById('formSubmitBtn');
       const name = document.getElementById('fname').value.trim();
@@ -2199,62 +2654,31 @@
       const email = document.getElementById('femail').value.trim();
       const service = document.getElementById('fservice').value;
       const message = document.getElementById('fmessage').value.trim();
-
-      if (!name || !phone || !email) {
-        alert('Name, Phone and Email are required');
-        return;
-      }
-
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-
-      // Use FormData for better Formspree compatibility (avoids CORS preflight)
+      if (!name || !phone || !email) { alert('Name, Phone and Email are required'); return; }
+      btn.textContent = 'Sending...'; btn.disabled = true;
       const formData = new FormData();
-      formData.append('name', name);
-      formData.append('phone', phone);
-      formData.append('email', email);
-      formData.append('service', service);
+      formData.append('name', name); formData.append('phone', phone);
+      formData.append('email', email); formData.append('service', service);
       formData.append('message', message);
-
       try {
         const res = await fetch('https://formspree.io/f/xbdpggre', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: formData
+          method: 'POST', headers: { 'Accept': 'application/json' }, body: formData
         });
-
         const data = await res.json().catch(() => ({}));
-
         if (res.ok) {
           btn.textContent = '✅ Enquiry Sent!';
           btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-          document.getElementById('fname').value = '';
-          document.getElementById('fphone').value = '';
-          document.getElementById('femail').value = '';
-          document.getElementById('fservice').value = '';
-          document.getElementById('fmessage').value = '';
-          setTimeout(() => {
-            btn.textContent = '⚡ Send Enquiry';
-            btn.style.background = '';
-            btn.disabled = false;
-          }, 4000);
+          ['fname','fphone','femail','fservice','fmessage'].forEach(id => document.getElementById(id).value = '');
+          setTimeout(() => { btn.textContent = '⚡ Send Enquiry'; btn.style.background = ''; btn.disabled = false; }, 4000);
         } else {
-          // Formspree returns errors array on failure
-          const errMsg = data.errors ? data.errors.map(e => e.message).join(', ') : 'Server error. Try again.';
-          throw new Error(errMsg);
+          throw new Error(data.errors ? data.errors.map(e => e.message).join(', ') : 'Server error');
         }
-      } catch (e) {
-        console.error('Form error:', e.message);
+      } catch(e) {
         btn.textContent = '❌ Failed. Try Again.';
         btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
-        setTimeout(() => {
-          btn.textContent = '⚡ Send Enquiry';
-          btn.style.background = '';
-          btn.disabled = false;
-        }, 3000);
+        setTimeout(() => { btn.textContent = '⚡ Send Enquiry'; btn.style.background = ''; btn.disabled = false; }, 3000);
       }
     }
   </script>
 </body>
-
 </html>
