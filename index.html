@@ -2654,13 +2654,15 @@
     /* Chat Window */
     .vb-window {
       width: 360px;
-      max-height: 540px;
+      /* Always fit within viewport: bottom of widget (100px) + toggle btn (~50px) + padding */
+      max-height: min(520px, calc(100vh - 180px));
       background: rgba(17, 20, 24, 0.97);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(212, 160, 23, 0.25);
       border-radius: 20px;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 160, 23, 0.08);
       transform: scale(0.85) translateY(20px);
       opacity: 0;
@@ -2675,7 +2677,7 @@
       pointer-events: all;
     }
 
-    /* Header */
+    /* Header — sticky so close button is ALWAYS visible */
     .vb-header {
       display: flex;
       align-items: center;
@@ -2684,6 +2686,10 @@
       background: linear-gradient(135deg, rgba(212, 160, 23, 0.15), rgba(255, 107, 0, 0.08));
       border-bottom: 1px solid rgba(212, 160, 23, 0.15);
       border-radius: 20px 20px 0 0;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      flex-shrink: 0;
     }
 
     .vb-header-left {
@@ -2936,12 +2942,13 @@
     @media (max-width: 480px) {
       #vboltWidget {
         right: 12px;
-        bottom: 40px;
+        bottom: 24px;
       }
 
       .vb-window {
         width: calc(100vw - 24px);
-        max-height: 480px;
+        /* Never go taller than viewport minus widget button space */
+        max-height: calc(100vh - 120px);
       }
 
       .vb-label {
