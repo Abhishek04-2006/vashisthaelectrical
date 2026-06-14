@@ -7,20 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vashistha Electrical Company – HT/LT Panel & Transformer Services</title>
   <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Open+Sans:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap"
     rel="stylesheet">
   <style>
     :root {
-      --gold: #D4A017;
-      --gold-light: #F0C040;
-      --dark: #0A0C10;
-      --dark2: #111418;
-      --dark3: #1A1E26;
-      --steel: #2A3040;
-      --text: #E8EAF0;
-      --muted: #8A92A0;
-      --accent: #FF6B00;
+      --navy: #1A2B4A;
+      --navy-dark: #0F1C30;
+      --navy-mid: #243555;
+      --navy-light: #2E4470;
+      --gold: #B8892A;
+      --gold-light: #D4A84B;
+      --maroon: #8B1A2A;
+      --cream: #F8F5F0;
+      --cream2: #F0EBE3;
+      --cream3: #E8E1D6;
+      --text: #1E2A3A;
+      --text2: #3A4A5C;
+      --muted: #6B7A8D;
+      --border: #C8CBCF;
       --white: #FFFFFF;
+      --accent: #B8892A;
     }
 
     *,
@@ -36,25 +42,30 @@
     }
 
     body {
-      font-family: 'Rajdhani', sans-serif;
-      background: var(--dark);
+      font-family: 'Open Sans', sans-serif;
+      background: var(--white);
       color: var(--text);
+      width: 100%;
+      /* NOTE: overflow-x:hidden must NOT be on body — it breaks fixed-position click/touch on iOS */
+    }
+
+    /* Prevent horizontal scroll without breaking fixed elements */
+    #page-wrapper {
       overflow-x: hidden;
       width: 100%;
-      max-width: 100vw;
     }
 
     /* ── SCROLLBAR ── */
     ::-webkit-scrollbar {
-      width: 5px;
+      width: 6px;
     }
 
     ::-webkit-scrollbar-track {
-      background: var(--dark2);
+      background: var(--cream2);
     }
 
     ::-webkit-scrollbar-thumb {
-      background: var(--gold);
+      background: var(--navy);
       border-radius: 3px;
     }
 
@@ -69,11 +80,12 @@
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       padding: 0 5%;
-      height: 70px;
-      background: rgba(10, 12, 16, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+      height: 74px;
+      background: var(--navy-dark);
+      backdrop-filter: none;
+      border-bottom: 3px solid var(--gold);
       transition: all 0.3s;
+      box-shadow: 0 2px 12px rgba(10, 15, 25, 0.18);
     }
 
     .nav-links {
@@ -86,6 +98,8 @@
 
     .hamburger {
       justify-self: end;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .nav-logo {
@@ -96,17 +110,17 @@
     }
 
     .nav-logo-icon {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--gold), var(--accent));
-      border-radius: 8px;
+      width: 44px;
+      height: 44px;
+      background: var(--gold);
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--dark);
-      font-family: 'Bebas Neue', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      font-family: 'Merriweather', serif;
       letter-spacing: 1px;
     }
 
@@ -115,45 +129,48 @@
     }
 
     .nav-logo-text .company {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      color: var(--gold);
-      letter-spacing: 2px;
+      font-family: 'Merriweather', serif;
+      font-size: 16px;
+      color: var(--white);
+      letter-spacing: 0.5px;
+      font-weight: 700;
     }
 
     .nav-logo-text .tagline {
       font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.8px;
       text-transform: uppercase;
+      font-family: 'Open Sans', sans-serif;
     }
 
 
     .nav-links a {
-      color: var(--muted);
+      color: rgba(255, 255, 255, 0.78);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
-      transition: color 0.3s, border-bottom-color 0.3s;
+      font-family: 'Open Sans', sans-serif;
+      transition: color 0.25s, border-bottom-color 0.25s;
       position: relative;
       padding-bottom: 4px;
       border-bottom: 2px solid transparent;
     }
 
     .nav-links a:hover {
-      color: var(--gold);
-      border-bottom-color: var(--gold);
+      color: var(--gold-light);
+      border-bottom-color: var(--gold-light);
     }
 
     .nav-cta {
-      background: linear-gradient(135deg, var(--gold), var(--accent));
-      color: var(--dark) !important;
+      background: var(--gold);
+      color: var(--white) !important;
       padding: 8px 20px;
-      border-radius: 4px;
+      border-radius: 3px;
       font-weight: 700 !important;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
 
     .nav-cta {
@@ -161,8 +178,8 @@
     }
 
     .nav-cta:hover {
-      opacity: 0.9;
-      color: var(--dark) !important;
+      background: var(--gold-light);
+      color: var(--white) !important;
     }
 
     .hamburger {
@@ -170,12 +187,20 @@
       cursor: pointer;
       flex-direction: column;
       gap: 5px;
+      padding: 10px;
+      margin-right: -10px;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .hamburger span {
       width: 24px;
       height: 2px;
-      background: var(--gold);
+      background: var(--white);
       transition: all 0.3s;
       display: block;
     }
@@ -187,7 +212,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      overflow: hidden;
+      /* overflow:hidden removed — it clips child pointer-events on mobile */
       padding-top: 70px;
       padding-bottom: 80px;
       isolation: isolate;
@@ -197,21 +222,19 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 70% 50%, rgba(212, 160, 23, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 20% 80%, rgba(255, 107, 0, 0.06) 0%, transparent 50%),
-        linear-gradient(135deg, #0A0C10 0%, #111820 100%);
+        linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-mid) 100%);
       pointer-events: none;
     }
 
-    /* Circuit pattern */
+    /* Subtle texture pattern */
     .hero-bg::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(212, 160, 23, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212, 160, 23, 0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 50px 50px;
       pointer-events: none;
     }
 
@@ -219,16 +242,16 @@
       position: absolute;
       top: 120px;
       right: 6%;
-      background: rgba(212, 160, 23, 0.1);
-      border: 1px solid rgba(212, 160, 23, 0.3);
+      background: rgba(184, 137, 42, 0.15);
+      border: 1px solid rgba(184, 137, 42, 0.5);
       padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 12px;
+      border-radius: 3px;
+      font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-light);
       font-weight: 600;
-      animation: float 4s ease-in-out infinite;
+      font-family: 'Open Sans', sans-serif;
       pointer-events: none;
     }
 
@@ -240,7 +263,7 @@
       }
 
       50% {
-        transform: translateY(-8px);
+        transform: translateY(-4px);
       }
     }
 
@@ -270,44 +293,44 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-light);
       font-weight: 600;
-      margin-bottom: 20px;
+      font-family: 'Open Sans', sans-serif;
+      margin-bottom: 18px;
     }
 
     .hero-label::before {
       content: '';
-      width: 30px;
+      width: 28px;
       height: 2px;
       background: var(--gold);
     }
 
     .hero-h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(52px, 8vw, 110px);
-      line-height: 0.95;
-      letter-spacing: 3px;
+      font-family: 'Merriweather', serif;
+      font-size: clamp(36px, 5.5vw, 78px);
+      line-height: 1.15;
+      letter-spacing: 0.5px;
       color: var(--white);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      font-weight: 900;
     }
 
     .hero-h1 .highlight {
-      background: linear-gradient(135deg, var(--gold), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--gold-light);
     }
 
     .hero-sub {
-      font-size: 18px;
-      color: var(--muted);
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.72);
       max-width: 560px;
-      line-height: 1.7;
+      line-height: 1.8;
       margin-bottom: 40px;
       font-weight: 400;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .hero-actions {
@@ -320,43 +343,61 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: linear-gradient(135deg, var(--gold), var(--accent));
-      color: var(--dark);
-      padding: 14px 32px;
-      border-radius: 4px;
+      background: var(--gold);
+      color: var(--white);
+      padding: 13px 30px;
+      border-radius: 3px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 1px;
+      font-size: 14px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(212, 160, 23, 0.3);
+      font-family: 'Open Sans', sans-serif;
+      transition: background 0.25s, box-shadow 0.25s;
+      box-shadow: 0 2px 10px rgba(184, 137, 42, 0.3);
+      border: 2px solid var(--gold);
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+      min-height: 48px;
+      position: relative;
+      z-index: 1;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(212, 160, 23, 0.4);
+    .btn-primary:hover,
+    .btn-primary:active {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      box-shadow: 0 4px 16px rgba(184, 137, 42, 0.35);
     }
 
     .btn-outline {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 1.5px solid rgba(212, 160, 23, 0.4);
-      color: var(--gold);
-      padding: 14px 32px;
-      border-radius: 4px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      color: var(--white);
+      padding: 13px 30px;
+      border-radius: 3px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 15px;
-      letter-spacing: 1px;
+      font-size: 14px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
-      transition: all 0.3s;
+      font-family: 'Open Sans', sans-serif;
+      transition: all 0.25s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+      min-height: 48px;
+      position: relative;
+      z-index: 1;
     }
 
-    .btn-outline:hover {
-      border-color: var(--gold);
-      background: rgba(212, 160, 23, 0.08);
+    .btn-outline:hover,
+    .btn-outline:active {
+      border-color: var(--white);
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .hero-stats {
@@ -386,18 +427,20 @@
     }
 
     .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 48px;
-      color: var(--gold);
+      font-family: 'Merriweather', serif;
+      font-size: 42px;
+      color: var(--gold-light);
       line-height: 1;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
+      font-weight: 900;
     }
 
     .stat-label {
-      font-size: 11px;
-      letter-spacing: 2px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Open Sans', sans-serif;
     }
 
     .hero-line {
@@ -405,9 +448,9 @@
       right: 0;
       top: 0;
       bottom: 0;
-      width: 45%;
-      background: linear-gradient(135deg, transparent 40%, rgba(212, 160, 23, 0.03) 100%);
-      border-left: 1px solid rgba(212, 160, 23, 0.08);
+      width: 42%;
+      background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.025) 100%);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -415,12 +458,11 @@
     }
 
     .electric-symbol {
-      font-size: 280px;
+      font-size: 260px;
       line-height: 1;
-      color: rgba(212, 160, 23, 0.04);
-      font-family: 'Bebas Neue', sans-serif;
+      color: rgba(255, 255, 255, 0.03);
+      font-family: 'Merriweather', serif;
       user-select: none;
-      animation: pulse 3s ease-in-out infinite;
     }
 
     @keyframes pulse {
@@ -431,14 +473,16 @@
       }
 
       50% {
-        opacity: 0.7;
+        opacity: 0.6;
       }
     }
 
     /* ── TICKER ── */
     .ticker {
-      background: linear-gradient(135deg, var(--gold), var(--accent));
-      padding: 12px 0;
+      background: var(--navy-dark);
+      border-top: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      padding: 11px 0;
       overflow: hidden;
     }
 
@@ -446,7 +490,7 @@
       display: flex;
       gap: 60px;
       white-space: nowrap;
-      animation: ticker 20s linear infinite;
+      animation: ticker 24s linear infinite;
     }
 
     @keyframes ticker {
@@ -460,63 +504,67 @@
     }
 
     .ticker-item {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 16px;
-      letter-spacing: 3px;
-      color: var(--dark);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.82);
       display: flex;
       align-items: center;
       gap: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
     }
 
     .ticker-item::before {
-      content: '⚡';
-      font-size: 12px;
+      content: '◆';
+      font-size: 8px;
+      color: var(--gold);
     }
 
     /* ── SECTION BASE ── */
     section {
-      padding: 100px 5%;
+      padding: 90px 5%;
       width: 100%;
       max-width: 100%;
-      overflow-x: hidden;
     }
 
     .section-label {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 16px;
+      color: var(--navy);
+      font-weight: 700;
+      font-family: 'Open Sans', sans-serif;
+      margin-bottom: 14px;
     }
 
     .section-label::before {
       content: '';
-      width: 24px;
+      width: 28px;
       height: 2px;
       background: var(--gold);
     }
 
     .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(36px, 5vw, 60px);
-      letter-spacing: 2px;
-      line-height: 1;
-      margin-bottom: 20px;
-      color: var(--white);
+      font-family: 'Merriweather', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: 0.3px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      color: var(--navy-dark);
+      font-weight: 900;
     }
 
     .section-title .accent {
-      color: var(--gold);
+      color: var(--navy);
     }
 
     /* ── ABOUT ── */
     #about {
-      background: var(--dark2);
+      background: var(--cream);
     }
 
     .about-grid {
@@ -529,11 +577,12 @@
     }
 
     .about-text p {
-      color: var(--muted);
+      color: var(--text2);
       line-height: 1.9;
       font-size: 16px;
       margin-bottom: 20px;
       font-weight: 400;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .about-cards {
@@ -544,35 +593,39 @@
     }
 
     .about-card {
-      background: var(--dark3);
-      border: 1px solid rgba(212, 160, 23, 0.1);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
       padding: 20px;
-      border-radius: 8px;
-      transition: border-color 0.3s, transform 0.3s;
+      border-radius: 4px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
 
     .about-card:hover {
-      border-color: rgba(212, 160, 23, 0.4);
-      transform: translateY(-3px);
+      border-left-color: var(--gold);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
     }
 
     .about-card-icon {
-      font-size: 28px;
+      font-size: 26px;
       margin-bottom: 10px;
     }
 
     .about-card-title {
       font-size: 14px;
       font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--gold);
+      letter-spacing: 0.5px;
+      color: var(--navy);
       margin-bottom: 4px;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .about-card-text {
       font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
+      color: var(--text2);
+      line-height: 1.6;
+      font-family: 'Open Sans', sans-serif;
     }
 
     /* Visual side */
@@ -581,9 +634,10 @@
     }
 
     .about-badge-wrap {
-      background: var(--dark3);
-      border: 1px solid rgba(212, 160, 23, 0.2);
-      border-radius: 12px;
+      background: var(--navy-dark);
+      border: 1px solid rgba(184, 137, 42, 0.25);
+      border-top: 4px solid var(--gold);
+      border-radius: 6px;
       padding: 40px;
       position: relative;
       overflow: hidden;
@@ -596,29 +650,28 @@
       right: -30%;
       width: 300px;
       height: 300px;
-      background: radial-gradient(circle, rgba(212, 160, 23, 0.1) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(184, 137, 42, 0.07) 0%, transparent 70%);
     }
 
     .about-badge-main {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 80px;
+      font-family: 'Merriweather', serif;
+      font-size: 64px;
       line-height: 1;
-      background: linear-gradient(135deg, var(--gold), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--gold-light);
       margin-bottom: 8px;
+      font-weight: 900;
     }
 
     .about-badge-sub {
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 2px;
-      color: var(--muted);
+      color: rgba(255, 255, 255, 0.65);
       text-transform: uppercase;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .about-divider {
-      width: 60px;
+      width: 50px;
       height: 2px;
       background: var(--gold);
       margin: 20px 0;
@@ -626,29 +679,31 @@
 
     .about-badge-desc {
       font-size: 15px;
-      color: var(--text);
-      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.80);
+      line-height: 1.75;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .about-cert {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(212, 160, 23, 0.1);
-      border: 1px solid rgba(212, 160, 23, 0.3);
+      background: rgba(184, 137, 42, 0.15);
+      border: 1px solid rgba(184, 137, 42, 0.4);
       padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12px;
+      border-radius: 3px;
+      font-size: 11px;
       letter-spacing: 1.5px;
-      color: var(--gold);
+      color: var(--gold-light);
       text-transform: uppercase;
       font-weight: 700;
+      font-family: 'Open Sans', sans-serif;
       margin-top: 20px;
     }
 
     /* ── SERVICES ── */
     #services {
-      background: var(--dark);
+      background: var(--white);
     }
 
     .services-header {
@@ -664,14 +719,16 @@
     }
 
     .service-card {
-      background: var(--dark2);
-      border: 1px solid rgba(212, 160, 23, 0.08);
-      border-radius: 8px;
-      padding: 36px 28px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--navy);
+      border-radius: 4px;
+      padding: 32px 26px;
       position: relative;
       overflow: hidden;
-      transition: all 0.3s;
+      transition: all 0.25s;
       cursor: default;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
 
     .service-card::before {
@@ -681,15 +738,15 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--accent));
+      background: var(--gold);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.4s;
+      transition: transform 0.35s;
     }
 
     .service-card:hover {
-      border-color: rgba(212, 160, 23, 0.3);
-      transform: translateY(-4px);
+      border-top-color: var(--gold);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     }
 
     .service-card:hover::before {
@@ -697,52 +754,55 @@
     }
 
     .service-number {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 64px;
-      color: rgba(212, 160, 23, 0.06);
+      font-family: 'Merriweather', serif;
+      font-size: 56px;
+      color: rgba(26, 43, 74, 0.06);
       line-height: 1;
       position: absolute;
       top: 16px;
       right: 20px;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
+      font-weight: 900;
     }
 
     .service-icon {
-      font-size: 36px;
-      margin-bottom: 20px;
+      font-size: 34px;
+      margin-bottom: 18px;
     }
 
     .service-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--white);
+      letter-spacing: 0.3px;
+      color: var(--navy-dark);
       margin-bottom: 10px;
+      font-family: 'Merriweather', serif;
     }
 
     .service-desc {
       font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
+      color: var(--text2);
+      line-height: 1.75;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .service-tag {
       display: inline-block;
       margin-top: 16px;
       padding: 4px 12px;
-      border-radius: 3px;
-      background: rgba(212, 160, 23, 0.1);
-      border: 1px solid rgba(212, 160, 23, 0.2);
-      font-size: 11px;
+      border-radius: 2px;
+      background: var(--navy-dark);
+      font-size: 10px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
+      color: var(--white);
+      font-weight: 700;
+      font-family: 'Open Sans', sans-serif;
     }
 
     /* ── WHY CHOOSE US ── */
     #why-us {
-      background: var(--dark2);
+      background: var(--cream2);
     }
 
     .why-header {
@@ -761,14 +821,15 @@
 
 
     .why-card {
-      background: var(--dark3);
-      border: 1px solid rgba(212, 160, 23, 0.1);
-      border-radius: 12px;
-      padding: 36px 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 32px 24px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      transition: all 0.35s;
+      transition: all 0.25s;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
 
     .why-card::before {
@@ -778,16 +839,15 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--accent));
+      background: var(--navy);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.4s;
+      transition: transform 0.35s;
     }
 
     .why-card:hover {
-      border-color: rgba(212, 160, 23, 0.4);
-      transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(212, 160, 23, 0.1);
+      border-color: var(--navy-light);
+      box-shadow: 0 6px 24px rgba(26, 43, 74, 0.12);
     }
 
     .why-card:hover::before {
@@ -801,22 +861,24 @@
     }
 
     .why-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      letter-spacing: 1.5px;
-      color: var(--white);
+      font-family: 'Merriweather', serif;
+      font-size: 18px;
+      letter-spacing: 0.3px;
+      color: var(--navy-dark);
       margin-bottom: 12px;
+      font-weight: 700;
     }
 
     .why-desc {
       font-size: 14px;
-      color: var(--muted);
+      color: var(--text2);
       line-height: 1.85;
+      font-family: 'Open Sans', sans-serif;
     }
 
     /* ── GALLERY ── */
     #gallery {
-      background: var(--dark);
+      background: var(--white);
     }
 
     .gallery-grid {
@@ -829,22 +891,22 @@
 
     .gallery-item {
       position: relative;
-      border-radius: 8px;
+      border-radius: 4px;
       overflow: hidden;
       aspect-ratio: 4/3;
-      background: var(--dark3);
-      border: 1px solid rgba(212, 160, 23, 0.1);
-      transition: transform 0.3s, border-color 0.3s;
+      background: var(--cream3);
+      border: 1px solid var(--border);
+      transition: transform 0.25s, box-shadow 0.25s;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
 
     .gallery-item:hover {
-      transform: translateY(-4px);
-      border-color: rgba(212, 160, 23, 0.4);
-      box-shadow: 0 10px 30px rgba(212, 160, 23, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
     }
 
     .gallery-item img {
@@ -871,18 +933,19 @@
     }
 
     .gallery-img-placeholder {
-      color: var(--gold);
-      font-size: 14px;
+      color: var(--navy);
+      font-size: 13px;
       letter-spacing: 1px;
       text-transform: uppercase;
       font-weight: 600;
-      opacity: 0.8;
+      opacity: 0.7;
       text-align: center;
+      font-family: 'Open Sans', sans-serif;
     }
 
     /* ── DIRECTOR ── */
     #director {
-      background: var(--dark);
+      background: var(--cream);
     }
 
     .director-wrap {
@@ -895,13 +958,15 @@
     }
 
     .director-card {
-      background: var(--dark3);
-      border: 1px solid rgba(212, 160, 23, 0.2);
-      border-radius: 12px;
+      background: var(--navy-dark);
+      border: 1px solid rgba(184, 137, 42, 0.2);
+      border-top: 4px solid var(--gold);
+      border-radius: 6px;
       padding: 40px 32px;
       text-align: center;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10);
     }
 
     .director-card::before {
@@ -910,73 +975,76 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--gold), var(--accent));
+      height: 0;
     }
 
     .director-avatar {
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--accent));
+      background: var(--navy);
+      border: 3px solid var(--gold);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 48px;
-      color: var(--dark);
+      font-family: 'Merriweather', serif;
+      font-size: 36px;
+      color: var(--gold-light);
       margin: 0 auto 20px;
-      border: 4px solid rgba(212, 160, 23, 0.3);
+      font-weight: 900;
     }
 
     .director-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      letter-spacing: 2px;
+      font-family: 'Merriweather', serif;
+      font-size: 26px;
+      letter-spacing: 0.5px;
       color: var(--white);
       margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .director-role {
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-light);
       font-weight: 600;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .director-exp {
       margin-top: 24px;
       padding-top: 24px;
-      border-top: 1px solid rgba(212, 160, 23, 0.1);
-      font-size: 42px;
-      font-family: 'Bebas Neue', sans-serif;
-      background: linear-gradient(135deg, var(--gold), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      border-top: 1px solid rgba(184, 137, 42, 0.2);
+      font-size: 38px;
+      font-family: 'Merriweather', serif;
+      color: var(--gold-light);
+      font-weight: 900;
     }
 
     .director-exp-label {
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(255, 255, 255, 0.55);
+      font-family: 'Open Sans', sans-serif;
     }
 
     .director-info h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 42px;
-      letter-spacing: 2px;
-      color: var(--white);
+      font-family: 'Merriweather', serif;
+      font-size: 36px;
+      letter-spacing: 0.3px;
+      color: var(--navy-dark);
       margin-bottom: 20px;
+      font-weight: 900;
     }
 
     .director-info p {
-      color: var(--muted);
+      color: var(--text2);
       line-height: 1.9;
       font-size: 16px;
       margin-bottom: 16px;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .expertise-list {
@@ -987,20 +1055,21 @@
     }
 
     .expertise-tag {
-      padding: 6px 14px;
-      border-radius: 4px;
-      background: rgba(212, 160, 23, 0.08);
-      border: 1px solid rgba(212, 160, 23, 0.2);
-      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 2px;
+      background: var(--navy-dark);
+      border: 1px solid rgba(184, 137, 42, 0.25);
+      font-size: 11px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-light);
       font-weight: 600;
+      font-family: 'Open Sans', sans-serif;
     }
 
     /* ── CONTACT ── */
     #contact {
-      background: var(--dark);
+      background: var(--cream);
     }
 
     .contact-grid {
@@ -1016,50 +1085,55 @@
       display: flex;
       gap: 20px;
       align-items: flex-start;
-      padding: 28px;
-      background: var(--dark2);
-      border: 1px solid rgba(212, 160, 23, 0.1);
-      border-radius: 8px;
-      margin-bottom: 16px;
-      transition: border-color 0.3s;
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 4px;
+      margin-bottom: 14px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
 
     .contact-item:hover {
-      border-color: rgba(212, 160, 23, 0.3);
+      border-left-color: var(--gold);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10);
     }
 
     .contact-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
+      width: 46px;
+      height: 46px;
+      border-radius: 4px;
       flex-shrink: 0;
-      background: linear-gradient(135deg, rgba(212, 160, 23, 0.2), rgba(255, 107, 0, 0.2));
+      background: var(--navy-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
+      font-size: 20px;
     }
 
     .contact-label {
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 6px;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .contact-value {
       font-size: 16px;
       font-weight: 600;
-      color: var(--white);
+      color: var(--text);
       word-break: break-all;
       overflow-wrap: anywhere;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .contact-value a {
-      color: var(--white);
+      color: var(--navy-dark);
       text-decoration: none;
-      transition: color 0.3s;
+      transition: color 0.25s;
     }
 
     .contact-value a:hover {
@@ -1068,18 +1142,21 @@
 
     /* Form */
     .contact-form {
-      background: var(--dark2);
-      border: 1px solid rgba(212, 160, 23, 0.1);
-      border-radius: 12px;
-      padding: 40px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--navy);
+      border-radius: 4px;
+      padding: 36px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
     }
 
     .form-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      letter-spacing: 2px;
+      font-family: 'Merriweather', serif;
+      font-size: 24px;
+      letter-spacing: 0.3px;
       margin-bottom: 28px;
-      color: var(--white);
+      color: var(--navy-dark);
+      font-weight: 700;
     }
 
     .form-row {
@@ -1093,34 +1170,36 @@
     }
 
     .form-group label {
-      font-size: 12px;
-      letter-spacing: 2px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--navy);
       display: block;
       margin-bottom: 8px;
-      font-weight: 600;
+      font-weight: 700;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .form-group input,
     .form-group textarea,
     .form-group select {
       width: 100%;
-      padding: 12px 16px;
-      background: var(--dark3);
-      border: 1px solid rgba(212, 160, 23, 0.15);
-      border-radius: 4px;
+      padding: 11px 14px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 3px;
       color: var(--text);
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 15px;
       outline: none;
-      transition: border-color 0.3s;
+      transition: border-color 0.25s, box-shadow 0.25s;
     }
 
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-      border-color: var(--gold);
+      border-color: var(--navy);
+      box-shadow: 0 0 0 2px rgba(26, 43, 74, 0.08);
     }
 
     .form-group textarea {
@@ -1129,32 +1208,38 @@
     }
 
     .form-group select option {
-      background: var(--dark3);
+      background: var(--white);
     }
 
     .form-btn {
       width: 100%;
       padding: 14px;
-      background: linear-gradient(135deg, var(--gold), var(--accent));
-      color: var(--dark);
-      border: none;
-      border-radius: 4px;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      letter-spacing: 2px;
+      background: var(--navy-dark);
+      color: var(--white);
+      border: 2px solid var(--navy-dark);
+      border-radius: 3px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       cursor: pointer;
-      transition: opacity 0.2s, transform 0.2s;
+      transition: background 0.25s, border-color 0.25s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      min-height: 50px;
     }
 
-    .form-btn:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
+    .form-btn:hover,
+    .form-btn:active {
+      background: var(--navy);
+      border-color: var(--navy);
     }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--dark2);
-      border-top: 1px solid rgba(212, 160, 23, 0.1);
+      background: var(--navy-dark);
+      border-top: 3px solid var(--gold);
       padding: 50px 5% 30px;
       width: 100%;
     }
@@ -1167,27 +1252,30 @@
     }
 
     .footer-brand .company {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 26px;
-      letter-spacing: 3px;
-      color: var(--gold);
+      font-family: 'Merriweather', serif;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+      color: var(--white);
+      font-weight: 700;
     }
 
     .footer-brand p {
       font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.60);
+      line-height: 1.75;
       margin-top: 12px;
       max-width: 280px;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .footer-col h4 {
-      font-size: 13px;
+      font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-light);
       margin-bottom: 20px;
       font-weight: 700;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .footer-col ul {
@@ -1199,19 +1287,20 @@
     }
 
     .footer-col ul li a {
-      color: var(--muted);
+      color: rgba(255, 255, 255, 0.58);
       text-decoration: none;
       font-size: 14px;
-      transition: color 0.3s;
+      transition: color 0.25s;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .footer-col ul li a:hover {
-      color: var(--gold);
+      color: var(--gold-light);
     }
 
     .footer-bottom {
       padding-top: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1219,22 +1308,24 @@
 
     .footer-bottom p {
       font-size: 13px;
-      color: var(--muted);
+      color: rgba(255, 255, 255, 0.45);
+      font-family: 'Open Sans', sans-serif;
     }
 
     .a-class-badge {
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(212, 160, 23, 0.1);
-      border: 1px solid rgba(212, 160, 23, 0.3);
+      background: rgba(184, 137, 42, 0.15);
+      border: 1px solid rgba(184, 137, 42, 0.35);
       padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: var(--gold);
+      border-radius: 3px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: var(--gold-light);
       font-weight: 700;
       text-transform: uppercase;
+      font-family: 'Open Sans', sans-serif;
     }
 
     /* ── RESPONSIVE BREAKPOINTS ── */
@@ -1286,17 +1377,17 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 70px;
+        top: 74px;
         left: 0;
         right: 0;
-        background: rgba(10, 12, 16, 0.98);
+        background: var(--navy-dark);
         padding: 24px;
         gap: 20px;
         align-items: flex-start;
-        border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+        border-bottom: 2px solid var(--gold);
         z-index: 999;
         overflow-y: auto;
-        max-height: calc(100vh - 70px);
+        max-height: calc(100vh - 74px);
       }
 
       .hero-line {
@@ -1387,8 +1478,8 @@
       }
 
       .hero-h1 {
-        font-size: 44px;
-        letter-spacing: 1px;
+        font-size: 34px;
+        letter-spacing: 0.5px;
       }
 
       .hero-sub {
@@ -1398,14 +1489,16 @@
       .hero-actions {
         flex-direction: column;
         gap: 12px;
+        align-items: stretch;
       }
 
       .btn-primary,
       .btn-outline {
         width: 100%;
         justify-content: center;
-        padding: 13px 20px;
-        font-size: 14px;
+        padding: 14px 20px;
+        font-size: 15px;
+        min-height: 52px;
       }
 
       .hero-stats {
@@ -1660,12 +1753,14 @@
       position: fixed;
       bottom: 20px;
       right: 16px;
-      z-index: 9999;
+      z-index: 10000;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       gap: 12px;
       max-width: calc(100vw - 32px);
+      /* Ensure touch events always reach this widget */
+      pointer-events: auto;
     }
 
     /* Popup Card */
@@ -1785,9 +1880,9 @@
       background: #fff;
       border: 1.5px solid #25D366;
       color: #128C7E;
-      padding: 9px 14px;
+      padding: 12px 14px;
       border-radius: 22px;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
@@ -1797,9 +1892,13 @@
       align-items: center;
       gap: 8px;
       text-decoration: none;
+      min-height: 44px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .wa-option-btn:hover {
+    .wa-option-btn:hover,
+    .wa-option-btn:active {
       background: #25D366;
       color: #fff;
       transform: translateX(3px);
@@ -1820,6 +1919,9 @@
       animation: waPulse 2s ease-in-out infinite;
       transition: transform 0.2s;
       flex-shrink: 0;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      pointer-events: auto;
     }
 
     .wa-float-btn:hover {
@@ -1886,7 +1988,6 @@
 </head>
 
 <body>
-
 
   <!-- WhatsApp Chat Widget -->
   <div class="wa-widget" id="waWidget">
@@ -1974,6 +2075,9 @@
       <span></span><span></span><span></span>
     </div>
   </nav>
+
+  <!-- Page wrapper: overflow-x hidden lives here, NOT on body -->
+  <div id="page-wrapper">
 
   <!-- HERO -->
   <section id="home">
@@ -2087,7 +2191,8 @@
     <div class="services-header fade-in">
       <div class="section-label">What We Do</div>
       <h2 class="section-title">Our Core <span class="accent">Services</span></h2>
-      <p style="color:var(--muted);font-size:16px;line-height:1.7;">End-to-end electrical contracting solutions for
+      <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">End-to-end
+        electrical contracting solutions for
         every scale of project — from panel fabrication to full-site erection.</p>
     </div>
     <div class="services-grid">
@@ -2147,7 +2252,8 @@
     <div class="why-header fade-in">
       <div class="section-label" style="justify-content:center;">Our Strengths</div>
       <h2 class="section-title">Why <span class="accent">Choose Us</span></h2>
-      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Trusted by industries across Uttar Pradesh —
+      <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">Trusted by
+        industries across Uttar Pradesh —
         delivering reliable, safe &amp; quality electrical solutions every project, every time.</p>
     </div>
     <div class="why-grid">
@@ -2195,7 +2301,8 @@
     <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
       <div class="section-label" style="justify-content:center;">Our Work</div>
       <h2 class="section-title">Project <span class="accent">Gallery</span></h2>
-      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Glimpses of our successfully completed electrical
+      <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">Glimpses of our
+        successfully completed electrical
         projects and panel installations.</p>
     </div>
     <div class="gallery-grid">
@@ -2223,17 +2330,18 @@
       </div>
     </div>
     <div style="text-align:center; margin-top: 50px;" class="fade-in">
-      <a href="gallery.html" class="btn-outline" style="border-color: rgba(212,160,23,0.8); color: var(--gold);">📸 View
+      <a href="gallery.html" class="btn-outline" style="border-color: var(--navy); color: var(--navy);">📷 View
         Full Gallery</a>
     </div>
   </section>
 
   <!-- VIDEO SHOWCASE -->
-  <section id="videos" style="background:var(--dark2);">
+  <section id="videos" style="background:var(--cream2);">
     <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
       <div class="section-label" style="justify-content:center;">Live Action</div>
       <h2 class="section-title">Video <span class="accent">Showcase</span></h2>
-      <p style="color:var(--muted);font-size:16px;line-height:1.7;">Watch our technical team in action. Reliable
+      <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">Watch our
+        technical team in action. Reliable
         installations and precision engineering captured alive.</p>
     </div>
     <div class="gallery-grid">
@@ -2257,7 +2365,7 @@
   </section>
 
   <!-- DIRECTOR -->
-  <section id="director" style="background:var(--dark);">
+  <section id="director" style="background:var(--cream);">
     <div class="director-wrap">
       <div class="director-card fade-in">
         <div class="director-avatar">AS</div>
@@ -2292,7 +2400,8 @@
     <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
       <div class="section-label" style="justify-content:center;">Get In Touch</div>
       <h2 class="section-title">Contact <span class="accent">Us</span></h2>
-      <p style="color:var(--muted);font-size:16px;">Ready to start your project? Reach out to us for a free
+      <p style="color:var(--text2);font-size:16px;font-family:'Open Sans',sans-serif;">Ready to start your project?
+        Reach out to us for a free
         consultation.</p>
     </div>
     <div class="contact-grid">
@@ -2354,13 +2463,13 @@
           <label>Message</label>
           <textarea id="fmessage" name="message" placeholder="Describe your project requirements..."></textarea>
         </div>
-        <button type="button" class="form-btn" id="formSubmitBtn" onclick="submitForm()">⚡ Send Enquiry</button>
+        <button type="button" class="form-btn" id="formSubmitBtn" onclick="submitForm()">Send Enquiry →</button>
       </form>
     </div>
 
     <!-- Google Maps Embed -->
     <div class="fade-in map-wrap"
-      style="max-width:1100px;margin:50px auto 0;border-radius:12px;overflow:hidden;border:1px solid rgba(212,160,23,0.2);">
+      style="max-width:1100px;margin:50px auto 0;border-radius:4px;overflow:hidden;border:2px solid var(--border);">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.8208955053547!2d77.46825457408897!3d28.515035889409223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cebf5533387bf%3A0x501d77dee1dba856!2sVashistha%20Electrical%20Company%20(%20A%20CLASS%20GOVT%20CONTRACTOR)!5e0!3m2!1sen!2sin!4v1774636539647!5m2!1sen!2sin"
         width="100%" height="400" style="border:0;display:block;min-height:200px;" allowfullscreen="" loading="lazy"
@@ -2406,12 +2515,14 @@
     </div>
   </footer>
 
+  </div><!-- /#page-wrapper -->
+
   <!-- ══ V-BOLT AI ASSISTANT ══ -->
   <div id="vboltWidget">
     <!-- Toggle Button -->
     <button id="vboltToggle" onclick="toggleVbolt()" aria-label="Open V-bolt AI Assistant">
       <span class="vb-icon" id="vboltIcon">⚡</span>
-      <span class="vb-label">V-bolt AI</span>
+      <span class="vb-label">Ask V-bolt</span>
       <span class="vb-notif" id="vboltNotif">1</span>
     </button>
 
@@ -2442,11 +2553,11 @@
 
       <!-- Input -->
       <div class="vb-input-row">
-        <input type="text" id="vbInput" class="vb-input" placeholder="Ask V-bolt anything…"
+        <input type="text" id="vbInput" class="vb-input" placeholder="Type your query here..."
           onkeydown="if(event.key==='Enter') vbSend()" />
         <button class="vb-send" onclick="vbSend()">➤</button>
       </div>
-      <div class="vb-footer-note">Powered by V-bolt · Vashistha Electrical</div>
+      <div class="vb-footer-note">Vashistha Electrical Company · AI Assistant</div>
     </div>
   </div>
 
@@ -2491,7 +2602,7 @@
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     window.addEventListener('scroll', () => {
       const nav = document.getElementById('navbar');
-      nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.5)' : 'none';
+      nav.style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(10,15,25,0.25)' : '0 2px 12px rgba(10,15,25,0.18)';
     });
 
     async function submitForm() {
@@ -2528,16 +2639,16 @@
         const data = await res.json().catch(() => ({}));
 
         if (res.ok) {
-          btn.textContent = '✅ Enquiry Sent!';
-          btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+          btn.textContent = '✅ Enquiry Sent Successfully!';
+          btn.style.background = '#2A6041'; btn.style.borderColor = '#2A6041';
           document.getElementById('fname').value = '';
           document.getElementById('fphone').value = '';
           document.getElementById('femail').value = '';
           document.getElementById('fservice').value = '';
           document.getElementById('fmessage').value = '';
           setTimeout(() => {
-            btn.textContent = '⚡ Send Enquiry';
-            btn.style.background = '';
+            btn.textContent = 'Send Enquiry';
+            btn.style.background = ''; btn.style.borderColor = '';
             btn.disabled = false;
           }, 4000);
         } else {
@@ -2548,10 +2659,10 @@
       } catch (e) {
         console.error('Form error:', e.message);
         btn.textContent = '❌ Failed. Try Again.';
-        btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+        btn.style.background = '#8B1A2A'; btn.style.borderColor = '#8B1A2A';
         setTimeout(() => {
-          btn.textContent = '⚡ Send Enquiry';
-          btn.style.background = '';
+          btn.textContent = 'Send Enquiry';
+          btn.style.background = ''; btn.style.borderColor = '';
           btn.disabled = false;
         }, 3000);
       }
@@ -2565,12 +2676,13 @@
       position: fixed;
       bottom: 100px;
       right: 24px;
-      z-index: 9999;
+      z-index: 10001;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       gap: 12px;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Open Sans', sans-serif;
+      pointer-events: auto;
     }
 
     /* Toggle button */
@@ -2578,19 +2690,23 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: linear-gradient(135deg, #D4A017, #FF6B00);
-      border: none;
-      border-radius: 50px;
-      padding: 12px 20px 12px 14px;
+      background: var(--navy-dark);
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      padding: 11px 18px 11px 14px;
       cursor: pointer;
-      box-shadow: 0 6px 32px rgba(212, 160, 23, 0.45);
-      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 16px rgba(10, 15, 25, 0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
       position: relative;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      min-height: 48px;
+      pointer-events: auto;
     }
 
     #vboltToggle:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 40px rgba(212, 160, 23, 0.55);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(10, 15, 25, 0.3);
     }
 
     .vb-icon {
@@ -2611,11 +2727,11 @@
     }
 
     .vb-label {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 16px;
-      letter-spacing: 2px;
-      color: #0A0C10;
-      font-weight: 900;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: var(--white);
+      font-weight: 700;
     }
 
     .vb-notif {
@@ -2656,18 +2772,18 @@
       width: 360px;
       /* Always fit within viewport: bottom of widget (100px) + toggle btn (~50px) + padding */
       max-height: min(520px, calc(100vh - 180px));
-      background: rgba(17, 20, 24, 0.97);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(212, 160, 23, 0.25);
-      border-radius: 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 4px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 160, 23, 0.08);
-      transform: scale(0.85) translateY(20px);
+      box-shadow: 0 8px 30px rgba(10, 15, 25, 0.18);
+      transform: scale(0.9) translateY(16px);
       opacity: 0;
       pointer-events: none;
-      transition: transform 0.3s cubic-bezier(.34, 1.56, .64, 1), opacity 0.25s;
+      transition: transform 0.25s ease, opacity 0.2s;
       transform-origin: bottom right;
     }
 
@@ -2682,10 +2798,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 18px;
-      background: linear-gradient(135deg, rgba(212, 160, 23, 0.15), rgba(255, 107, 0, 0.08));
-      border-bottom: 1px solid rgba(212, 160, 23, 0.15);
-      border-radius: 20px 20px 0 0;
+      padding: 14px 18px;
+      background: var(--navy-dark);
+      border-bottom: 1px solid rgba(184, 137, 42, 0.2);
+      border-radius: 0;
       position: sticky;
       top: 0;
       z-index: 2;
@@ -2699,14 +2815,14 @@
     }
 
     .vb-avatar {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #D4A017, #FF6B00);
+      width: 38px;
+      height: 38px;
+      background: var(--gold);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 18px;
       position: relative;
     }
 
@@ -2714,24 +2830,26 @@
       position: absolute;
       bottom: 1px;
       right: 1px;
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       background: #22c55e;
       border-radius: 50%;
-      border: 2px solid #111418;
+      border: 2px solid var(--navy-dark);
     }
 
     .vb-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      letter-spacing: 2px;
-      color: #D4A017;
+      font-family: 'Merriweather', serif;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+      color: var(--white);
+      font-weight: 700;
     }
 
     .vb-status {
       font-size: 11px;
-      color: #8A92A0;
-      letter-spacing: 0.5px;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.3px;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .vb-close {
@@ -2758,12 +2876,13 @@
     .vb-messages {
       flex: 1;
       overflow-y: auto;
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       scrollbar-width: thin;
-      scrollbar-color: rgba(212, 160, 23, 0.3) transparent;
+      scrollbar-color: var(--border) transparent;
+      background: var(--cream);
     }
 
     .vb-msg {
@@ -2782,31 +2901,33 @@
 
     .vb-bubble {
       padding: 10px 14px;
-      border-radius: 14px;
+      border-radius: 6px;
       font-size: 14px;
-      line-height: 1.55;
+      line-height: 1.6;
       font-weight: 400;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .vb-msg.bot .vb-bubble {
-      background: rgba(212, 160, 23, 0.1);
-      border: 1px solid rgba(212, 160, 23, 0.2);
-      color: #E8EAF0;
-      border-bottom-left-radius: 4px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-bottom-left-radius: 2px;
     }
 
     .vb-msg.user .vb-bubble {
-      background: linear-gradient(135deg, #D4A017, #FF6B00);
-      color: #0A0C10;
+      background: var(--navy-dark);
+      color: var(--white);
       font-weight: 600;
-      border-bottom-right-radius: 4px;
+      border-bottom-right-radius: 2px;
     }
 
     .vb-time {
       font-size: 10px;
-      color: #4A5260;
+      color: var(--muted);
       margin-top: 4px;
       padding: 0 4px;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .vb-msg.user .vb-time {
@@ -2824,7 +2945,7 @@
     .vb-dot {
       width: 7px;
       height: 7px;
-      background: #D4A017;
+      background: var(--navy);
       border-radius: 50%;
       animation: vbDot 1.2s ease-in-out infinite;
     }
@@ -2858,84 +2979,89 @@
       flex-wrap: wrap;
       gap: 6px;
       padding: 8px 14px;
-      border-top: 1px solid rgba(212, 160, 23, 0.08);
+      border-top: 1px solid var(--border);
+      background: var(--cream);
     }
 
     .vb-chip {
-      background: rgba(212, 160, 23, 0.08);
-      border: 1px solid rgba(212, 160, 23, 0.25);
-      color: #D4A017;
-      border-radius: 20px;
+      background: var(--white);
+      border: 1px solid var(--navy);
+      color: var(--navy-dark);
+      border-radius: 3px;
       padding: 5px 12px;
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
+      font-family: 'Open Sans', sans-serif;
+      transition: background 0.2s, color 0.2s;
     }
 
     .vb-chip:hover {
-      background: rgba(212, 160, 23, 0.18);
-      transform: translateY(-1px);
+      background: var(--navy-dark);
+      color: var(--white);
+      border-color: var(--navy-dark);
     }
 
     /* Input */
     .vb-input-row {
       display: flex;
       gap: 8px;
-      padding: 12px 14px;
-      border-top: 1px solid rgba(212, 160, 23, 0.1);
+      padding: 10px 12px;
+      border-top: 1px solid var(--border);
+      background: var(--white);
     }
 
     .vb-input {
       flex: 1;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(212, 160, 23, 0.2);
-      border-radius: 24px;
-      padding: 9px 14px;
-      color: #E8EAF0;
-      font-family: 'Rajdhani', sans-serif;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 8px 12px;
+      color: var(--text);
+      font-family: 'Open Sans', sans-serif;
       font-size: 14px;
       outline: none;
       transition: border-color 0.2s;
     }
 
     .vb-input:focus {
-      border-color: rgba(212, 160, 23, 0.55);
+      border-color: var(--navy);
     }
 
     .vb-input::placeholder {
-      color: #4A5260;
+      color: var(--muted);
     }
 
     .vb-send {
-      background: linear-gradient(135deg, #D4A017, #FF6B00);
+      background: var(--navy-dark);
       border: none;
-      border-radius: 50%;
-      width: 38px;
-      height: 38px;
+      border-radius: 3px;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 15px;
-      color: #0A0C10;
-      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 14px;
+      color: var(--white);
+      transition: background 0.2s;
       flex-shrink: 0;
     }
 
     .vb-send:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 16px rgba(212, 160, 23, 0.4);
+      background: var(--navy);
     }
 
     /* Footer note */
     .vb-footer-note {
       text-align: center;
       font-size: 10px;
-      color: #2A3040;
-      padding: 6px 0 10px;
+      color: var(--muted);
+      padding: 5px 0 8px;
       letter-spacing: 0.5px;
+      font-family: 'Open Sans', sans-serif;
+      background: var(--white);
     }
 
     /* Mobile */
@@ -2968,77 +3094,77 @@
     const VB_KB = [
       {
         keys: ['hello', 'hi', 'hey', 'hlo', 'helo', 'namaskar', 'namaste', 'namskar'],
-        answer: '⚡ Namaste! Main V-bolt hoon, Vashistha Electrical ka AI Assistant.\n\nAap kaise madad kar sakta hoon aaj? Neeche quick options se choose karein ya seedha type karein! 😊'
+        answer: '⚡ Good day! I am <b>V-bolt</b>, the AI Assistant of Vashistha Electrical Company.\n\nHow may I assist you today? Please select a quick option below or type your query directly.'
       },
       {
         keys: ['service', 'services', 'kya karte', 'kya kaam', 'what do', 'work', 'offer', 'provide'],
-        answer: '🔧 <b>Hamari Services:</b>\n\n⚡ HT/LT Control Panels\n⚡ AMF & APF Panel\n⚡ Distribution Board\n⚡ HT/LT Erection Work\n⚡ Liaison Work\n⚡ Panel & Machine Maintenance\n\nKisi bhi service ke baare mein detail jaanein!'
+        answer: '🔧 <b>Our Services:</b>\n\n⚡ HT/LT Control Panels\n⚡ AMF & APF Panel\n⚡ Distribution Board\n⚡ HT/LT Erection Work\n⚡ Liaison Work\n⚡ Panel & Machine Maintenance\n\nPlease feel free to ask for details on any specific service.'
       },
       {
         keys: ['ht', 'lt', 'ht/lt', 'panel', 'control panel', 'htlt'],
-        answer: '🔌 <b>HT/LT Control Panels</b>\n\nHum high-quality HT (High Tension) aur LT (Low Tension) control panels design aur manufacture karte hain. Industrial, commercial aur government projects ke liye certified panels banate hain.'
+        answer: '🔌 <b>HT/LT Control Panels</b>\n\nWe design, fabricate and install high-quality High Tension (HT) and Low Tension (LT) control panels. Our certified panels are built for industrial, commercial and government project requirements.'
       },
       {
         keys: ['amf', 'apf', 'automatic', 'power factor'],
-        answer: '⚙️ <b>AMF & APF Panels</b>\n\nAutomatic Mains Failure (AMF) aur Automatic Power Factor (APF) panels — power reliability aur energy efficiency ke liye best solution. DG set integration bhi available hai.'
+        answer: '⚙️ <b>AMF & APF Panels</b>\n\nAutomatic Mains Failure (AMF) and Automatic Power Factor (APF) panels — delivering optimal power reliability and energy efficiency. DG set integration is also available as per project requirements.'
       },
       {
         keys: ['erection', 'erection work', 'installation', 'install'],
-        answer: '🏗️ <b>HT/LT Erection Work</b>\n\nPole erection, transformer installation, cable laying aur substation work — sab hamari team karte hai with full safety compliance.'
+        answer: '🏗️ <b>HT/LT Erection Work</b>\n\nOur team undertakes pole erection, transformer installation, cable laying and substation work — all carried out in full compliance with electrical safety standards.'
       },
       {
         keys: ['liaison', 'government', 'permission', 'approval', 'govt'],
-        answer: '📋 <b>Liaison Work</b>\n\nHum government approvals, DVVNL/PVVNL connection, NOC aur electrical clearances ka kaam karte hain. A-Class contractor hone ki wajah se hamara track record excellent hai.'
+        answer: '📋 <b>Liaison Work</b>\n\nWe handle government approvals, DVVNL/PVVNL connections, NOC applications and electrical clearances. As a registered A-Class Government Contractor, we maintain an excellent compliance track record.'
       },
       {
         keys: ['maintenance', 'amc', 'repair', 'service contract'],
-        answer: '🔩 <b>Panel & Machine Maintenance</b>\n\nHum Annual Maintenance Contract (AMC) bhi provide karte hain — panels, machines aur electrical systems ki regular servicing ke liye. Downtime minimize hota hai.'
+        answer: '🔩 <b>Panel & Machine Maintenance</b>\n\nWe offer Annual Maintenance Contracts (AMC) for panels, machines and electrical systems. Regular preventive servicing ensures minimal downtime and consistent operational efficiency.'
       },
       {
         keys: ['contact', 'phone', 'call', 'number', 'reach', 'whatsapp'],
-        answer: '📞 <b>Humse Sampark Karein:</b>\n\n📱 99993 53003\n📧 services@vashisthaelectrical.com\n📍 Greater Noida, U.P. – 201306\n\nWhatsApp pe bhi message kar sakte hain neeche wale button se!'
+        answer: '📞 <b>Contact Us:</b>\n\n📱 99993 53003\n📧 services@vashisthaelectrical.com\n📍 Greater Noida, U.P. – 201306\n\nYou may also reach us via the WhatsApp button below for a prompt response.'
       },
       {
         keys: ['location', 'address', 'kahan', 'where', 'noida', 'greater noida', 'uttar pradesh', 'up'],
-        answer: '📍 <b>Hamara Office:</b>\n\nVashistha Electrical Company\nGreater Noida, Uttar Pradesh – 201306\n\nGoogle Maps pe hum available hain — Contact section mein map dekh sakte hain!'
+        answer: '📍 <b>Our Office:</b>\n\nVashistha Electrical Company\nSurajpur Main Market, Greater Noida,\nGautam Buddha Nagar, U.P. – 201306\n\nYou may view our location on Google Maps in the Contact section of this website.'
       },
       {
         keys: ['price', 'rate', 'cost', 'kitna', 'quote', 'quotation', 'charges'],
-        answer: '💰 <b>Pricing & Quotation</b>\n\nHamari pricing project ke size aur scope pe depend karti hai. Free consultation ke liye:\n\n➤ Contact form fill karein\n➤ Ya directly WhatsApp karein\n\nHum 24 ghante mein response dete hain!'
+        answer: '💰 <b>Pricing & Quotation</b>\n\nOur pricing is determined by the scope and scale of each project. To receive a free consultation and detailed quotation:\n\n➤ Fill in the Contact Form on this page\n➤ Or message us directly on WhatsApp\n\nWe aim to respond within 24 hours of every enquiry.'
       },
       {
         keys: ['about', 'company', 'vashistha', 'history', 'since', 'year', 'established'],
-        answer: '🏢 <b>Vashistha Electrical Company</b>\n\n✅ A-Class Government Contractor\n✅ 10+ saal ka experience\n✅ 500+ projects successfully completed\n✅ Greater Noida, UP based\n✅ HT/LT electrical solutions ke specialists\n\nHum quality, safety aur timely execution par focus karte hain.'
+        answer: '🏢 <b>Vashistha Electrical Company</b>\n\n✅ A-Class Government Contractor\n✅ 10+ Years of Industry Experience\n✅ 500+ Projects Successfully Completed\n✅ Based in Greater Noida, Uttar Pradesh\n✅ Specialists in HT/LT Electrical Solutions\n\nOur focus remains on quality, safety and timely project execution.'
       },
       {
         keys: ['experience', 'years', 'track record', 'projects', 'completed'],
-        answer: '🏆 <b>Hamara Track Record:</b>\n\n📊 500+ Projects Completed\n🕐 10+ Years of Experience\n👷 50+ Skilled Professionals\n✅ Zero Accident Record\n🏛️ Government & Private Sector dono mein kaam kiya hai'
+        answer: '🏆 <b>Our Track Record:</b>\n\n📊 500+ Projects Completed\n🕐 10+ Years of Experience\n👷 50+ Skilled Professionals\n✅ Zero Accident Record\n🏛️ Serving both Government & Private Sectors'
       },
       {
         keys: ['certification', 'certified', 'iso', 'license', 'a class', 'grade'],
-        answer: '🎖️ <b>Certifications & Grade:</b>\n\nHum <b>A-Class Government Electrical Contractor</b> hain — highest grade.\n\n✅ Licensed & Certified\n✅ UPPCL empanelled\n✅ Safety compliance certified\n\nSaare government tenders ke liye eligible hain.'
+        answer: '🎖️ <b>Certifications & Grade:</b>\n\nWe are a registered <b>A-Class Government Electrical Contractor</b> — the highest classification in the sector.\n\n✅ Licensed & Certified\n✅ UPPCL Empanelled\n✅ Safety Compliance Certified\n\nWe are fully eligible to bid for all government tenders.'
       },
       {
         keys: ['gallery', 'photo', 'image', 'projects', 'portfolio', 'work done'],
-        answer: '🖼️ <b>Hamara Work Portfolio:</b>\n\nHamari Gallery mein 50+ real project photos hain!\n\nWebsite par Gallery section mein jaake dekh sakte hain, ya gallery.html open karein full collection ke liye.'
+        answer: '🖼️ <b>Our Work Portfolio:</b>\n\nOur Gallery features 50+ real project photographs showcasing our completed installations and panel work.\n\nVisit the Gallery section of this website or open gallery.html to view the full collection.'
       },
       {
         keys: ['enquiry', 'enquire', 'book', 'appointment', 'meeting', 'visit'],
-        answer: '📝 <b>Enquiry Kaise Karein:</b>\n\n1️⃣ Contact Section mein form fill karein\n2️⃣ WhatsApp pe message karein\n3️⃣ Direct call karein\n\nHum aaapke project requirements samajh ke best solution denge!'
+        answer: '📝 <b>How to Submit an Enquiry:</b>\n\n1️⃣ Fill in the Contact Form on this page\n2️⃣ Send us a message on WhatsApp\n3️⃣ Call us directly at +91 99993 53003\n\nWe will assess your project requirements and propose the most suitable solution.'
       },
       {
         keys: ['thank', 'thanks', 'shukriya', 'dhanyawad', 'great', 'good', 'nice', 'perfect', 'awesome'],
-        answer: '😊 Shukriya! Aapka aadar karte hain! Koi bhi sawal ho toh V-bolt hamesha ready hai.\n\n⚡ Vashistha Electrical – Powered by Expertise!'
+        answer: '😊 Thank you for your kind words! V-bolt is always available to assist you further.\n\n⚡ Vashistha Electrical — Powered by Expertise!'
       },
       {
         keys: ['bye', 'goodbye', 'ok', 'okay', 'done', 'exit', 'close', 'band'],
-        answer: '👋 Dhanyawad for chatting with V-bolt! Kisi bhi sawaal ke liye hum yahan hain.\n\n⚡ Vashistha Electrical Company ki taraf se namaskar!'
+        answer: '👋 Thank you for connecting with V-bolt. Should you have any further questions, we are always here to help.\n\n⚡ Warm regards from Vashistha Electrical Company.'
       }
     ];
 
-    const VB_DEFAULT = '🤔 Yeh sawal samajh nahi aaya. Kripya in topics mein se koi choose karein ya neeche quick reply use karein:\n\n• Services • Contact • Pricing • About Us • Gallery';
+    const VB_DEFAULT = '🤔 I\'m sorry, I didn\'t quite understand that query. Please choose from the topics below or use the quick reply buttons:\n\n• Services • Contact • Pricing • About Us • Gallery';
 
-    const VB_GREET = '👋 Namaste! Main <b>V-bolt</b> hoon — Vashistha Electrical ka AI Assistant!\n\nMain aapko humari services, pricing, location aur baaki jaankari mein madad kar sakta hoon. Kya jaanna chahte hain?';
+    const VB_GREET = '👋 Welcome! I am <b>V-bolt</b> — the AI Assistant of Vashistha Electrical Company.\n\nI can assist you with information about our services, pricing, location and more. What would you like to know?';
 
     const VB_QUICK_DEFAULT = ['⚡ Services', '📞 Contact', '💰 Pricing', '🏢 About Us', '🖼️ Gallery'];
 
