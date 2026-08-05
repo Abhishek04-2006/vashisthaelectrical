@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -526,6 +526,11 @@
       padding: 90px 5%;
       width: 100%;
       max-width: 100%;
+      scroll-margin-top: 90px;
+    }
+
+    #contact {
+      scroll-margin-top: 100px;
     }
 
     .section-label {
@@ -1759,12 +1764,19 @@
       align-items: flex-end;
       gap: 12px;
       max-width: calc(100vw - 32px);
-      /* Ensure touch events always reach this widget */
-      pointer-events: auto;
+      pointer-events: none !important;
+    }
+
+    #waWidget .wa-popup.open,
+    #waWidget .wa-float-btn {
+      pointer-events: auto !important;
     }
 
     /* Popup Card */
     .wa-popup {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
@@ -1781,6 +1793,32 @@
       opacity: 1;
       pointer-events: all;
       transform: scale(1) translateY(0);
+    }
+
+    .wa-float-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+      border: none;
+      cursor: pointer;
+      animation: waPulse 2s ease-in-out infinite;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      pointer-events: auto;
+      position: relative;
+      z-index: 10001;
+    }
+
+    .wa-popup.open + .wa-float-btn,
+    .wa-popup.open ~ .wa-float-btn {
+      pointer-events: auto;
     }
 
     /* Popup Header */
@@ -1922,6 +1960,8 @@
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
       pointer-events: auto;
+      position: relative;
+      z-index: 10001;
     }
 
     .wa-float-btn:hover {
@@ -2079,441 +2119,446 @@
   <!-- Page wrapper: overflow-x hidden lives here, NOT on body -->
   <div id="page-wrapper">
 
-  <!-- HERO -->
-  <section id="home">
-    <div class="hero-bg"></div>
-    <div class="hero-badge">⚡ A-Class Govt. Contractor</div>
-    <div class="hero-content">
-      <div class="hero-label">Vashistha Electrical Company</div>
-      <h1 class="hero-h1">
-        Complete<br>
-        <span class="highlight">HT–LT Panel</span><br>
-        &amp; Transformer<br>Services
-      </h1>
-      <p class="hero-sub">Reliable HT/LT electrical solutions for industrial, commercial and government projects —
-        delivered with precision, safety &amp; excellence.</p>
-      <div class="hero-actions">
-        <a href="#services" class="btn-primary">⚡ Our Services</a>
-        <a href="#contact" class="btn-outline">📞 Get In Touch</a>
-      </div>
-    </div>
-    <div class="hero-line">
-      <div class="electric-symbol">⚡</div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">8+</div>
-        <div class="stat-label">Years Experience</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">150+</div>
-        <div class="stat-label">Projects Done</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">A</div>
-        <div class="stat-label">Class Contractor</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TICKER -->
-  <div class="ticker">
-    <div class="ticker-track" id="ticker">
-      <span class="ticker-item">HT/LT Control Panels</span>
-      <span class="ticker-item">AMF Panel</span>
-      <span class="ticker-item">APF Panel</span>
-      <span class="ticker-item">Distribution Board</span>
-      <span class="ticker-item">Electrical Erection Work</span>
-      <span class="ticker-item">Liaison Work</span>
-      <span class="ticker-item">Panel Maintenance</span>
-      <span class="ticker-item">Transformer Services</span>
-      <span class="ticker-item">HT/LT Control Panels</span>
-      <span class="ticker-item">AMF Panel</span>
-      <span class="ticker-item">APF Panel</span>
-      <span class="ticker-item">Distribution Board</span>
-      <span class="ticker-item">Electrical Erection Work</span>
-      <span class="ticker-item">Liaison Work</span>
-      <span class="ticker-item">Panel Maintenance</span>
-      <span class="ticker-item">Transformer Services</span>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-grid">
-      <div class="about-text fade-in">
-        <div class="section-label">Who We Are</div>
-        <h2 class="section-title">Trusted <span class="accent">Electrical</span> Solutions</h2>
-        <p>Vashistha Electrical Company is a trusted A-Class Government Contractor with over 5 years of experience in
-          delivering electrical contracting services. Since our establishment, we have been providing reliable and
-          efficient HT/LT electrical solutions for industrial, commercial, and government projects.</p>
-        <p>We specialize in HT/LT panels, transformer services, electrical erection work, liaison services, and
-          electrical maintenance — with a strong commitment to safety, quality workmanship, and timely project
-          execution.</p>
-        <div class="about-cards">
-          <div class="about-card">
-            <div class="about-card-icon">🏛️</div>
-            <div class="about-card-title">Govt. Certified</div>
-            <div class="about-card-text">A-Class Government Contractor with verified credentials</div>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon">🛡️</div>
-            <div class="about-card-title">Safety First</div>
-            <div class="about-card-text">Strict compliance with safety standards on every project</div>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon">⚙️</div>
-            <div class="about-card-title">Quality Work</div>
-            <div class="about-card-text">Skilled technical team ensuring top-grade workmanship</div>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon">⏱️</div>
-            <div class="about-card-title">On-Time Delivery</div>
-            <div class="about-card-text">Timely execution and project completion every time</div>
-          </div>
+    <!-- HERO -->
+    <section id="home">
+      <div class="hero-bg"></div>
+      <div class="hero-badge">⚡ A-Class Govt. Contractor</div>
+      <div class="hero-content">
+        <div class="hero-label">Vashistha Electrical Company</div>
+        <h1 class="hero-h1">
+          Complete<br>
+          <span class="highlight">HT–LT Panel</span><br>
+          &amp; Transformer<br>Services
+        </h1>
+        <p class="hero-sub">Reliable HT/LT electrical solutions for industrial, commercial and government projects —
+          delivered with precision, safety &amp; excellence.</p>
+        <div class="hero-actions">
+          <a href="#services" class="btn-primary">⚡ Our Services</a>
+          <a href="#contact" class="btn-outline">📞 Get In Touch</a>
         </div>
       </div>
-      <div class="about-visual fade-in">
-        <div class="about-badge-wrap">
-          <div class="about-badge-main">A-CLASS</div>
-          <div class="about-badge-sub">Government Contractor</div>
-          <div class="about-divider"></div>
-          <div class="about-badge-desc">Serving industrial, commercial &amp; government sectors across Uttar Pradesh
-            with unmatched expertise in HT/LT electrical systems.</div>
-          <div class="about-cert">✔ Registered &amp; Certified</div>
+      <div class="hero-line">
+        <div class="electric-symbol">⚡</div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">150+</div>
+          <div class="stat-label">Projects Done</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">A</div>
+          <div class="stat-label">Class Contractor</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="services-header fade-in">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Our Core <span class="accent">Services</span></h2>
-      <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">End-to-end
-        electrical contracting solutions for
-        every scale of project — from panel fabrication to full-site erection.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card fade-in">
-        <div class="service-number">01</div>
-        <div class="service-icon">⚡</div>
-        <div class="service-title">HT/LT Control Panels</div>
-        <div class="service-desc">Design, fabrication, and installation of High Tension and Low Tension control panels
-          for industrial and commercial applications.</div>
-        <span class="service-tag">Core Service</span>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-number">02</div>
-        <div class="service-icon">🔋</div>
-        <div class="service-title">AMF &amp; APF Panel</div>
-        <div class="service-desc">Automatic Main Failure panels for seamless power backup and Automatic Power Factor
-          panels for energy efficiency.</div>
-        <span class="service-tag">Automation</span>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-number">03</div>
-        <div class="service-icon">🔌</div>
-        <div class="service-title">Distribution Board</div>
-        <div class="service-desc">Supply and installation of distribution boards ensuring safe and efficient power
-          distribution across facilities.</div>
-        <span class="service-tag">Distribution</span>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-number">04</div>
-        <div class="service-icon">🏗️</div>
-        <div class="service-title">HT/LT Erection Work</div>
-        <div class="service-desc">Complete electrical erection and installation work including cabling, wiring, and
-          commissioning for large-scale projects.</div>
-        <span class="service-tag">Installation</span>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-number">05</div>
-        <div class="service-icon">📋</div>
-        <div class="service-title">Liaison Work</div>
-        <div class="service-desc">Expert handling of government and utility liaison, permits, approvals, and regulatory
-          compliance for electrical projects.</div>
-        <span class="service-tag">Compliance</span>
-      </div>
-      <div class="service-card fade-in">
-        <div class="service-number">06</div>
-        <div class="service-icon">🔧</div>
-        <div class="service-title">Panel &amp; Machine Maintenance</div>
-        <div class="service-desc">Preventive and corrective maintenance for electrical panels, machines, and control
-          systems to ensure uninterrupted operations.</div>
-        <span class="service-tag">Maintenance</span>
+    <!-- TICKER -->
+    <div class="ticker">
+      <div class="ticker-track" id="ticker">
+        <span class="ticker-item">HT/LT Control Panels</span>
+        <span class="ticker-item">AMF Panel</span>
+        <span class="ticker-item">APF Panel</span>
+        <span class="ticker-item">Distribution Board</span>
+        <span class="ticker-item">Electrical Erection Work</span>
+        <span class="ticker-item">Liaison Work</span>
+        <span class="ticker-item">Panel Maintenance</span>
+        <span class="ticker-item">Transformer Services</span>
+        <span class="ticker-item">HT/LT Control Panels</span>
+        <span class="ticker-item">AMF Panel</span>
+        <span class="ticker-item">APF Panel</span>
+        <span class="ticker-item">Distribution Board</span>
+        <span class="ticker-item">Electrical Erection Work</span>
+        <span class="ticker-item">Liaison Work</span>
+        <span class="ticker-item">Panel Maintenance</span>
+        <span class="ticker-item">Transformer Services</span>
       </div>
     </div>
-  </section>
 
-  <!-- WHY CHOOSE US -->
-  <section id="why-us">
-    <div class="why-header fade-in">
-      <div class="section-label" style="justify-content:center;">Our Strengths</div>
-      <h2 class="section-title">Why <span class="accent">Choose Us</span></h2>
-      <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">Trusted by
-        industries across Uttar Pradesh —
-        delivering reliable, safe &amp; quality electrical solutions every project, every time.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card fade-in">
-        <span class="why-icon">🏛️</span>
-        <div class="why-title">A-Class Govt. Certified</div>
-        <div class="why-desc">Registered A-Class Government Contractor with verified credentials — eligible for
-          large-scale government and industrial projects.</div>
-      </div>
-      <div class="why-card fade-in">
-        <span class="why-icon">⏱️</span>
-        <div class="why-title">On-Time Delivery</div>
-        <div class="why-desc">We understand the value of time. Every project is planned and executed to meet deadlines
-          without compromising on quality.</div>
-      </div>
-      <div class="why-card fade-in">
-        <span class="why-icon">🛡️</span>
-        <div class="why-title">Safety First Approach</div>
-        <div class="why-desc">Strict adherence to electrical safety standards and regulations on every site — protecting
-          workers, clients, and infrastructure.</div>
-      </div>
-      <div class="why-card fade-in">
-        <span class="why-icon">⚙️</span>
-        <div class="why-title">Expert Technical Team</div>
-        <div class="why-desc">Our skilled professionals bring decades of hands-on expertise in HT/LT systems, panel
-          fabrication, and erection work.</div>
-      </div>
-      <div class="why-card fade-in">
-        <span class="why-icon">💰</span>
-        <div class="why-title">Competitive Pricing</div>
-        <div class="why-desc">Premium quality electrical solutions at fair, transparent pricing — no hidden costs, no
-          surprises, maximum value for every rupee.</div>
-      </div>
-      <div class="why-card fade-in">
-        <span class="why-icon">🤝</span>
-        <div class="why-title">Client Satisfaction</div>
-        <div class="why-desc">100+ successfully completed projects with long-term client relationships built on trust,
-          transparency, and consistent performance.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section id="gallery">
-    <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
-      <div class="section-label" style="justify-content:center;">Our Work</div>
-      <h2 class="section-title">Project <span class="accent">Gallery</span></h2>
-      <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">Glimpses of our
-        successfully completed electrical
-        projects and panel installations.</p>
-    </div>
-    <div class="gallery-grid">
-      <!-- 
-        Add your photos here! 
-        Uncomment the <img> tag and add your image link.
-      -->
-      <div class="gallery-item fade-in">
-        <img src="images/1.jpeg" alt="Electrical Project" loading="lazy">
-      </div>
-      <div class="gallery-item fade-in">
-        <img src="images/2.jpeg" alt="Electrical Project" loading="lazy">
-      </div>
-      <div class="gallery-item fade-in">
-        <img src="images/3.jpeg" alt="Electrical Project" loading="lazy">
-      </div>
-      <div class="gallery-item fade-in">
-        <img src="images/4.jpeg" alt="Electrical Project" loading="lazy">
-      </div>
-      <div class="gallery-item fade-in">
-        <img src="images/5.jpeg" alt="Electrical Project" loading="lazy">
-      </div>
-      <div class="gallery-item fade-in">
-        <img src="images/6.jpeg" alt="Electrical Project" loading="lazy">
-      </div>
-    </div>
-    <div style="text-align:center; margin-top: 50px;" class="fade-in">
-      <a href="gallery.html" class="btn-outline" style="border-color: var(--navy); color: var(--navy);">📷 View
-        Full Gallery</a>
-    </div>
-  </section>
-
-  <!-- VIDEO SHOWCASE -->
-  <section id="videos" style="background:var(--cream2);">
-    <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
-      <div class="section-label" style="justify-content:center;">Live Action</div>
-      <h2 class="section-title">Video <span class="accent">Showcase</span></h2>
-      <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">Watch our
-        technical team in action. Reliable
-        installations and precision engineering captured alive.</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item fade-in">
-        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM%20(1).mp4" autoplay loop muted
-          playsinline></video>
-      </div>
-      <div class="gallery-item fade-in">
-        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM%20(2).mp4" autoplay loop muted
-          playsinline></video>
-      </div>
-      <div class="gallery-item fade-in">
-        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM.mp4" autoplay loop muted
-          playsinline></video>
-      </div>
-      <div class="gallery-item fade-in">
-        <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.07%20PM.mp4" autoplay loop muted
-          playsinline></video>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIRECTOR -->
-  <section id="director" style="background:var(--cream);">
-    <div class="director-wrap">
-      <div class="director-card fade-in">
-        <div class="director-avatar">AS</div>
-        <div class="director-name">Anuj Sharma</div>
-        <div class="director-role">Director</div>
-        <div class="director-exp">15+</div>
-        <div class="director-exp-label">Years of Experience</div>
-      </div>
-      <div class="director-info fade-in">
-        <div class="section-label">Leadership</div>
-        <h2 class="section-title">Meet Our <span class="accent">Director</span></h2>
-        <p>Mr. Anuj Sharma, Director of Vashistha Electrical Company, brings over 15 years of professional experience in
-          the electrical contracting industry. He possesses extensive expertise in HT/LT electrical systems, control
-          panels, and transformer services.</p>
-        <p>Supported by a highly skilled and professional technical team, he leads the company in delivering safe,
-          reliable, and timely electrical solutions for industrial, commercial, and government projects. The company
-          operates with a strong focus on quality, regulatory compliance, and client satisfaction.</p>
-        <div class="expertise-list">
-          <span class="expertise-tag">HT/LT Systems</span>
-          <span class="expertise-tag">Control Panels</span>
-          <span class="expertise-tag">Transformer Services</span>
-          <span class="expertise-tag">Erection Work</span>
-          <span class="expertise-tag">Liaison Services</span>
-          <span class="expertise-tag">Maintenance</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
-      <div class="section-label" style="justify-content:center;">Get In Touch</div>
-      <h2 class="section-title">Contact <span class="accent">Us</span></h2>
-      <p style="color:var(--text2);font-size:16px;font-family:'Open Sans',sans-serif;">Ready to start your project?
-        Reach out to us for a free
-        consultation.</p>
-    </div>
-    <div class="contact-grid">
-      <div class="fade-in">
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div>
-            <div class="contact-label">Phone</div>
-            <div class="contact-value"><a href="tel:+919999353003">+91 99993 53003</a></div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📧</div>
-          <div>
-            <div class="contact-label">Email</div>
-            <div class="contact-value">
-              <a
-                href="mailto:vashisthaelectrical@gmail.com?subject=Service%20Enquiry%20-%20Vashistha%20Electrical%20Company&body=Hello%2C%0A%0AI%20would%20like%20to%20enquire%20about%20your%20electrical%20services.%0A%0AName%3A%20%0APhone%3A%20%0AService%20Required%3A%20%0AMessage%3A%20%0A%0AThank%20you.">vashisthaelectrical@gmail.com</a>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <div class="section-label">Who We Are</div>
+          <h2 class="section-title">Trusted <span class="accent">Electrical</span> Solutions</h2>
+          <p>Vashistha Electrical Company is a trusted A-Class Government Contractor with over 5 years of experience in
+            delivering electrical contracting services. Since our establishment, we have been providing reliable and
+            efficient HT/LT electrical solutions for industrial, commercial, and government projects.</p>
+          <p>We specialize in HT/LT panels, transformer services, electrical erection work, liaison services, and
+            electrical maintenance — with a strong commitment to safety, quality workmanship, and timely project
+            execution.</p>
+          <div class="about-cards">
+            <div class="about-card">
+              <div class="about-card-icon">🏛️</div>
+              <div class="about-card-title">Govt. Certified</div>
+              <div class="about-card-text">A-Class Government Contractor with verified credentials</div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">🛡️</div>
+              <div class="about-card-title">Safety First</div>
+              <div class="about-card-text">Strict compliance with safety standards on every project</div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">⚙️</div>
+              <div class="about-card-title">Quality Work</div>
+              <div class="about-card-text">Skilled technical team ensuring top-grade workmanship</div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">⏱️</div>
+              <div class="about-card-title">On-Time Delivery</div>
+              <div class="about-card-text">Timely execution and project completion every time</div>
             </div>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <div class="contact-label">Address</div>
-            <div class="contact-value">Surajpur Main Market, Greater Noida,<br>Gautam Buddha Nagar (U.P.) – 201306</div>
+        <div class="about-visual fade-in">
+          <div class="about-badge-wrap">
+            <div class="about-badge-main">A-CLASS</div>
+            <div class="about-badge-sub">Government Contractor</div>
+            <div class="about-divider"></div>
+            <div class="about-badge-desc">Serving industrial, commercial &amp; government sectors across Uttar Pradesh
+              with unmatched expertise in HT/LT electrical systems.</div>
+            <div class="about-cert">✔ Registered &amp; Certified</div>
           </div>
         </div>
       </div>
-      <form class="contact-form fade-in" id="contactForm">
-        <div class="form-title">Send Us a Message</div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" id="fname" name="name" placeholder="Full Name" required>
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" id="fphone" name="phone" placeholder="+91 XXXXX XXXXX" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" id="femail" name="email" placeholder="your@email.com" required>
-        </div>
-        <div class="form-group">
-          <label>Service Required</label>
-          <select id="fservice" name="service">
-            <option value="">Select a Service</option>
-            <option>HT/LT Control Panels</option>
-            <option>AMF / APF Panel</option>
-            <option>Distribution Board</option>
-            <option>HT/LT Erection Work</option>
-            <option>Liaison Work</option>
-            <option>Panel & Machine Maintenance</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea id="fmessage" name="message" placeholder="Describe your project requirements..."></textarea>
-        </div>
-        <button type="button" class="form-btn" id="formSubmitBtn" onclick="submitForm()">Send Enquiry →</button>
-      </form>
-    </div>
+    </section>
 
-    <!-- Google Maps Embed -->
-    <div class="fade-in map-wrap"
-      style="max-width:1100px;margin:50px auto 0;border-radius:4px;overflow:hidden;border:2px solid var(--border);">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.8208955053547!2d77.46825457408897!3d28.515035889409223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cebf5533387bf%3A0x501d77dee1dba856!2sVashistha%20Electrical%20Company%20(%20A%20CLASS%20GOVT%20CONTRACTOR)!5e0!3m2!1sen!2sin!4v1774636539647!5m2!1sen!2sin"
-        width="100%" height="400" style="border:0;display:block;min-height:200px;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </section>
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="services-header fade-in">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Our Core <span class="accent">Services</span></h2>
+        <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">End-to-end
+          electrical contracting solutions for
+          every scale of project — from panel fabrication to full-site erection.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-number">01</div>
+          <div class="service-icon">⚡</div>
+          <div class="service-title">HT/LT Control Panels</div>
+          <div class="service-desc">Design, fabrication, and installation of High Tension and Low Tension control panels
+            for industrial and commercial applications.</div>
+          <span class="service-tag">Core Service</span>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">02</div>
+          <div class="service-icon">🔋</div>
+          <div class="service-title">AMF &amp; APF Panel</div>
+          <div class="service-desc">Automatic Main Failure panels for seamless power backup and Automatic Power Factor
+            panels for energy efficiency.</div>
+          <span class="service-tag">Automation</span>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">03</div>
+          <div class="service-icon">🔌</div>
+          <div class="service-title">Distribution Board</div>
+          <div class="service-desc">Supply and installation of distribution boards ensuring safe and efficient power
+            distribution across facilities.</div>
+          <span class="service-tag">Distribution</span>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">04</div>
+          <div class="service-icon">🏗️</div>
+          <div class="service-title">HT/LT Erection Work</div>
+          <div class="service-desc">Complete electrical erection and installation work including cabling, wiring, and
+            commissioning for large-scale projects.</div>
+          <span class="service-tag">Installation</span>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">05</div>
+          <div class="service-icon">📋</div>
+          <div class="service-title">Liaison Work</div>
+          <div class="service-desc">Expert handling of government and utility liaison, permits, approvals, and
+            regulatory
+            compliance for electrical projects.</div>
+          <span class="service-tag">Compliance</span>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">06</div>
+          <div class="service-icon">🔧</div>
+          <div class="service-title">Panel &amp; Machine Maintenance</div>
+          <div class="service-desc">Preventive and corrective maintenance for electrical panels, machines, and control
+            systems to ensure uninterrupted operations.</div>
+          <span class="service-tag">Maintenance</span>
+        </div>
+      </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="company">Vashistha Electrical Co.</div>
-        <p>A-Class Government Contractor providing reliable HT/LT electrical solutions with quality, safety &amp; timely
-          execution across Uttar Pradesh.</p>
+    <!-- WHY CHOOSE US -->
+    <section id="why-us">
+      <div class="why-header fade-in">
+        <div class="section-label" style="justify-content:center;">Our Strengths</div>
+        <h2 class="section-title">Why <span class="accent">Choose Us</span></h2>
+        <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">Trusted by
+          industries across Uttar Pradesh —
+          delivering reliable, safe &amp; quality electrical solutions every project, every time.</p>
       </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#why-us">Why Choose Us</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+      <div class="why-grid">
+        <div class="why-card fade-in">
+          <span class="why-icon">🏛️</span>
+          <div class="why-title">A-Class Govt. Certified</div>
+          <div class="why-desc">Registered A-Class Government Contractor with verified credentials — eligible for
+            large-scale government and industrial projects.</div>
+        </div>
+        <div class="why-card fade-in">
+          <span class="why-icon">⏱️</span>
+          <div class="why-title">On-Time Delivery</div>
+          <div class="why-desc">We understand the value of time. Every project is planned and executed to meet deadlines
+            without compromising on quality.</div>
+        </div>
+        <div class="why-card fade-in">
+          <span class="why-icon">🛡️</span>
+          <div class="why-title">Safety First Approach</div>
+          <div class="why-desc">Strict adherence to electrical safety standards and regulations on every site —
+            protecting
+            workers, clients, and infrastructure.</div>
+        </div>
+        <div class="why-card fade-in">
+          <span class="why-icon">⚙️</span>
+          <div class="why-title">Expert Technical Team</div>
+          <div class="why-desc">Our skilled professionals bring decades of hands-on expertise in HT/LT systems, panel
+            fabrication, and erection work.</div>
+        </div>
+        <div class="why-card fade-in">
+          <span class="why-icon">💰</span>
+          <div class="why-title">Competitive Pricing</div>
+          <div class="why-desc">Premium quality electrical solutions at fair, transparent pricing — no hidden costs, no
+            surprises, maximum value for every rupee.</div>
+        </div>
+        <div class="why-card fade-in">
+          <span class="why-icon">🤝</span>
+          <div class="why-title">Client Satisfaction</div>
+          <div class="why-desc">100+ successfully completed projects with long-term client relationships built on trust,
+            transparency, and consistent performance.</div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#services">HT/LT Control Panels</a></li>
-          <li><a href="#services">AMF &amp; APF Panel</a></li>
-          <li><a href="#services">Distribution Board</a></li>
-          <li><a href="#services">Erection Work</a></li>
-          <li><a href="#services">Liaison Work</a></li>
-          <li><a href="#services">Maintenance</a></li>
-        </ul>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
+        <div class="section-label" style="justify-content:center;">Our Work</div>
+        <h2 class="section-title">Project <span class="accent">Gallery</span></h2>
+        <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">Glimpses of our
+          successfully completed electrical
+          projects and panel installations.</p>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2024 Vashistha Electrical Company. All rights reserved.</p>
-      <div class="a-class-badge">⚡ A-Class Govt. Contractor</div>
-      <p style="color:var(--muted);font-size:13px;">Greater Noida, U.P. – 201306</p>
-    </div>
-  </footer>
+      <div class="gallery-grid">
+        <!-- 
+        Add your photos here! 
+        Uncomment the <img> tag and add your image link.
+      -->
+        <div class="gallery-item fade-in">
+          <img src="images/1.jpeg" alt="Electrical Project" loading="lazy">
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="images/2.jpeg" alt="Electrical Project" loading="lazy">
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="images/3.jpeg" alt="Electrical Project" loading="lazy">
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="images/4.jpeg" alt="Electrical Project" loading="lazy">
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="images/5.jpeg" alt="Electrical Project" loading="lazy">
+        </div>
+        <div class="gallery-item fade-in">
+          <img src="images/6.jpeg" alt="Electrical Project" loading="lazy">
+        </div>
+      </div>
+      <div style="text-align:center; margin-top: 50px;" class="fade-in">
+        <a href="gallery.html" class="btn-outline" style="border-color: var(--navy); color: var(--navy);">📷 View
+          Full Gallery</a>
+      </div>
+    </section>
+
+    <!-- VIDEO SHOWCASE -->
+    <section id="videos" style="background:var(--cream2);">
+      <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
+        <div class="section-label" style="justify-content:center;">Live Action</div>
+        <h2 class="section-title">Video <span class="accent">Showcase</span></h2>
+        <p style="color:var(--text2);font-size:16px;line-height:1.7;font-family:'Open Sans',sans-serif;">Watch our
+          technical team in action. Reliable
+          installations and precision engineering captured alive.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item fade-in">
+          <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM%20(1).mp4" autoplay loop muted
+            playsinline></video>
+        </div>
+        <div class="gallery-item fade-in">
+          <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM%20(2).mp4" autoplay loop muted
+            playsinline></video>
+        </div>
+        <div class="gallery-item fade-in">
+          <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.06%20PM.mp4" autoplay loop muted
+            playsinline></video>
+        </div>
+        <div class="gallery-item fade-in">
+          <video src="videos/WhatsApp%20Video%202026-04-10%20at%206.16.07%20PM.mp4" autoplay loop muted
+            playsinline></video>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTOR -->
+    <section id="director" style="background:var(--cream);">
+      <div class="director-wrap">
+        <div class="director-card fade-in">
+          <div class="director-avatar">AS</div>
+          <div class="director-name">Anuj Sharma</div>
+          <div class="director-role">Director</div>
+          <div class="director-exp">15+</div>
+          <div class="director-exp-label">Years of Experience</div>
+        </div>
+        <div class="director-info fade-in">
+          <div class="section-label">Leadership</div>
+          <h2 class="section-title">Meet Our <span class="accent">Director</span></h2>
+          <p>Mr. Anuj Sharma, Director of Vashistha Electrical Company, brings over 15 years of professional experience
+            in
+            the electrical contracting industry. He possesses extensive expertise in HT/LT electrical systems, control
+            panels, and transformer services.</p>
+          <p>Supported by a highly skilled and professional technical team, he leads the company in delivering safe,
+            reliable, and timely electrical solutions for industrial, commercial, and government projects. The company
+            operates with a strong focus on quality, regulatory compliance, and client satisfaction.</p>
+          <div class="expertise-list">
+            <span class="expertise-tag">HT/LT Systems</span>
+            <span class="expertise-tag">Control Panels</span>
+            <span class="expertise-tag">Transformer Services</span>
+            <span class="expertise-tag">Erection Work</span>
+            <span class="expertise-tag">Liaison Services</span>
+            <span class="expertise-tag">Maintenance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div style="text-align:center;max-width:600px;margin:0 auto 60px;">
+        <div class="section-label" style="justify-content:center;">Get In Touch</div>
+        <h2 class="section-title">Contact <span class="accent">Us</span></h2>
+        <p style="color:var(--text2);font-size:16px;font-family:'Open Sans',sans-serif;">Ready to start your project?
+          Reach out to us for a free
+          consultation.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="fade-in">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value"><a href="tel:+919999353003">+91 99993 53003</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">
+                <a
+                  href="mailto:vashisthaelectrical@gmail.com?subject=Service%20Enquiry%20-%20Vashistha%20Electrical%20Company&body=Hello%2C%0A%0AI%20would%20like%20to%20enquire%20about%20your%20electrical%20services.%0A%0AName%3A%20%0APhone%3A%20%0AService%20Required%3A%20%0AMessage%3A%20%0A%0AThank%20you.">vashisthaelectrical@gmail.com</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Address</div>
+              <div class="contact-value">Surajpur Main Market, Greater Noida,<br>Gautam Buddha Nagar (U.P.) – 201306
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form fade-in" id="contactForm">
+          <div class="form-title">Send Us a Message</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" id="fname" name="name" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="fphone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="femail" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Service Required</label>
+            <select id="fservice" name="service">
+              <option value="">Select a Service</option>
+              <option>HT/LT Control Panels</option>
+              <option>AMF / APF Panel</option>
+              <option>Distribution Board</option>
+              <option>HT/LT Erection Work</option>
+              <option>Liaison Work</option>
+              <option>Panel & Machine Maintenance</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="fmessage" name="message" placeholder="Describe your project requirements..."></textarea>
+          </div>
+          <button type="button" class="form-btn" id="formSubmitBtn" onclick="submitForm()">Send Enquiry →</button>
+        </form>
+      </div>
+
+      <!-- Google Maps Embed -->
+      <div class="fade-in map-wrap"
+        style="max-width:1100px;margin:50px auto 0;border-radius:4px;overflow:hidden;border:2px solid var(--border);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.8208955053547!2d77.46825457408897!3d28.515035889409223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cebf5533387bf%3A0x501d77dee1dba856!2sVashistha%20Electrical%20Company%20(%20A%20CLASS%20GOVT%20CONTRACTOR)!5e0!3m2!1sen!2sin!4v1774636539647!5m2!1sen!2sin"
+          width="100%" height="400" style="border:0;display:block;min-height:200px;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="company">Vashistha Electrical Co.</div>
+          <p>A-Class Government Contractor providing reliable HT/LT electrical solutions with quality, safety &amp;
+            timely
+            execution across Uttar Pradesh.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why-us">Why Choose Us</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">HT/LT Control Panels</a></li>
+            <li><a href="#services">AMF &amp; APF Panel</a></li>
+            <li><a href="#services">Distribution Board</a></li>
+            <li><a href="#services">Erection Work</a></li>
+            <li><a href="#services">Liaison Work</a></li>
+            <li><a href="#services">Maintenance</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Vashistha Electrical Company. All rights reserved.</p>
+        <div class="a-class-badge">⚡ A-Class Govt. Contractor</div>
+        <p style="color:var(--muted);font-size:13px;">Greater Noida, U.P. – 201306</p>
+      </div>
+    </footer>
 
   </div><!-- /#page-wrapper -->
 
@@ -2581,21 +2626,26 @@
         document.getElementById('waFloatBtn').classList.remove('active');
       }
     });
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          e.preventDefault();
-          document.getElementById('navLinks').classList.remove('open');
-          const id = href.replace('#', '');
-          const target = document.getElementById(id);
-          if (target) {
-            const top = target.getBoundingClientRect().top + window.pageYOffset - 70;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-          }
-        }
-      });
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+
+    if (href === "#") return;
+
+    const target = document.querySelector(href);
+
+    if (!target) return;
+
+    e.preventDefault();
+
+    document.getElementById("navLinks")?.classList.remove("open");
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
+  });
+});
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
@@ -2682,7 +2732,12 @@
       align-items: flex-end;
       gap: 12px;
       font-family: 'Open Sans', sans-serif;
-      pointer-events: auto;
+      pointer-events: none !important;
+    }
+
+    #vboltWidget #vboltToggle,
+    #vboltWidget .vb-window.open {
+      pointer-events: all !important;
     }
 
     /* Toggle button */
@@ -2791,6 +2846,10 @@
       transform: scale(1) translateY(0);
       opacity: 1;
       pointer-events: all;
+    }
+
+    #vboltToggle {
+      pointer-events: auto;
     }
 
     /* Header — sticky so close button is ALWAYS visible */
